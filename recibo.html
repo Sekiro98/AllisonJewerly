@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +18,8 @@
     <button onclick="window.print()">🖨️ Imprimir Recibo</button>
     <a href="index.html"><button>Volver al inicio</button></a>
   </main>
+  <button onclick="descargarPDF()">💾 Descargar PDF</button>
+
 
   <footer style="padding: 1rem;">
     <p>&copy; 2025 Allison Jewelry</p>
@@ -43,6 +47,47 @@
         </ul>
         <p><strong>Total pagado:</strong> $${total}</p>
       `;
+      <script type="module">
+  import { jsPDF } from "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
+
+  const pedido = JSON.parse(localStorage.getItem("pedidoConfirmado"));
+
+  window.descargarPDF = () => {
+    if (!pedido) {
+      alert("No hay datos del pedido.");
+      return;
+    }
+
+    const doc = new jsPDF();
+    let y = 10;
+
+    doc.setFontSize(16);
+    doc.text("🧾 Recibo de Compra - Allison Jewelry", 10, y);
+    y += 10;
+
+    doc.setFontSize(12);
+    doc.text(`Cliente: ${pedido.nombre}`, 10, y); y += 8;
+    doc.text(`Dirección: ${pedido.direccion}`, 10, y); y += 8;
+    doc.text(`Correo: ${pedido.correo}`, 10, y); y += 8;
+    doc.text(`Método de pago: ${pedido.metodo}`, 10, y); y += 10;
+
+    doc.text("Productos:", 10, y); y += 8;
+
+    let total = 0;
+    pedido.carrito.forEach(p => {
+      const linea = `${p.nombre} (x${p.cantidad}) - $${p.precio * p.cantidad}`;
+      doc.text(linea, 12, y);
+      y += 7;
+      total += p.precio * p.cantidad;
+    });
+
+    y += 5;
+    doc.text(`Total: $${total}`, 10, y);
+
+    doc.save("recibo_allison_jewelry.pdf");
+  };
+</script>
+
     }
   </script>
 </body>
