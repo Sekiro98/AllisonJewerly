@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <h1>Resumen de tu Compra</h1>
+    <h1>Resumen y Envío</h1>
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -17,14 +17,29 @@
     </nav>
   </header>
 
-  <main>
-    <section id="resumen-compra" style="padding: 1rem;"></section>
-    <div style="padding: 1rem;">
-      <button onclick="confirmarCompra()">Confirmar pedido</button>
-    </div>
+  <main style="padding: 1rem;">
+    <section id="resumen-compra"></section>
+
+    <h2>Información de Envío</h2>
+    <form id="formulario-compra" onsubmit="return confirmarCompra()">
+      <label>Nombre completo:<br><input type="text" id="nombre" required></label><br><br>
+      <label>Dirección de envío:<br><input type="text" id="direccion" required></label><br><br>
+      <label>Correo electrónico:<br><input type="email" id="correo" required></label><br><br>
+
+      <label>Método de pago:<br>
+        <select id="metodoPago" required>
+          <option value="">Selecciona una opción</option>
+          <option value="tarjeta">Tarjeta de crédito</option>
+          <option value="paypal">PayPal</option>
+          <option value="contraentrega">Pago contra entrega</option>
+        </select>
+      </label><br><br>
+
+      <button type="submit">Confirmar pedido</button>
+    </form>
   </main>
 
-  <footer>
+  <footer style="padding: 1rem;">
     <p>&copy; 2025 Allison Jewelry</p>
   </footer>
 
@@ -34,9 +49,10 @@
 
     if (carrito.length === 0) {
       resumen.innerHTML = "<p>No hay productos en tu carrito.</p>";
+      document.getElementById("formulario-compra").style.display = "none";
     } else {
       let total = 0;
-      resumen.innerHTML = "<h2>Productos:</h2><ul>" +
+      resumen.innerHTML = "<h2>Productos en tu pedido:</h2><ul>" +
         carrito.map(item => {
           total += item.precio * item.cantidad;
           return `<li>${item.nombre} (x${item.cantidad}) - $${item.precio * item.cantidad}</li>`;
@@ -45,9 +61,20 @@
     }
 
     function confirmarCompra() {
+      const nombre = document.getElementById("nombre").value.trim();
+      const direccion = document.getElementById("direccion").value.trim();
+      const correo = document.getElementById("correo").value.trim();
+      const metodo = document.getElementById("metodoPago").value;
+
+      if (!nombre || !direccion || !correo || !metodo) {
+        alert("Por favor, completa todos los campos.");
+        return false;
+      }
+
+      alert(`¡Gracias por tu compra, ${nombre}!\nTu pedido será enviado a: ${direccion}`);
       localStorage.removeItem("carrito");
-      alert("¡Gracias por tu compra!");
       window.location.href = "index.html";
+      return false; // para evitar recarga del formulario
     }
   </script>
 </body>
