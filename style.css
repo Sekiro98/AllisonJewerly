@@ -1,0 +1,40 @@
+/* Aquí va el diseño visual con colores elegantes y tipografía */
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fffaf4;
+  color: #333;
+}
+header {
+  background-color: #111;
+  color: gold;
+  padding: 1rem;
+  text-align: center;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+nav a {
+  color: gold;
+  text-decoration: none;
+  font-weight: bold;
+}
+.hero {
+  background: url('joyeria-bg.jpg') no-repeat center/cover;
+  color: white;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+.boton {
+  background-color: gold;
+  color: #111;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+}
