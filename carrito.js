@@ -1,7 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
   actualizarCarrito();
 
+  // Hacer funciones accesibles desde HTML
   window.agregarAlCarrito = function(nombre, precio) {
     carrito.push({ nombre, precio });
     guardarCarrito();
