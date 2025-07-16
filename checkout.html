@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finalizar compra | Allison Jewelry</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Resumen de tu Compra</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="resumen-compra" style="padding: 1rem;"></section>
+    <div style="padding: 1rem;">
+      <button onclick="confirmarCompra()">Confirmar pedido</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Allison Jewelry</p>
+  </footer>
+
+  <script>
+    const resumen = document.getElementById("resumen-compra");
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    if (carrito.length === 0) {
+      resumen.innerHTML = "<p>No hay productos en tu carrito.</p>";
+    } else {
+      let total = 0;
+      resumen.innerHTML = "<h2>Productos:</h2><ul>" +
+        carrito.map(item => {
+          total += item.precio * item.cantidad;
+          return `<li>${item.nombre} (x${item.cantidad}) - $${item.precio * item.cantidad}</li>`;
+        }).join("") +
+        "</ul><p><strong>Total:</strong> $" + total + "</p>";
+    }
+
+    function confirmarCompra() {
+      localStorage.removeItem("carrito");
+      alert("¡Gracias por tu compra!");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
