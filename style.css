@@ -50,7 +50,7 @@ nav a:hover {
 /* Sección hero (inicio) */
 .hero {
   background: url('joyeria-bg.jpg') no-repeat center/cover;
-  color: #0000ff;
+  color: #ffff00;
   text-align: center;
   padding: 8rem 4rem;
   animation: fadeIn 1.5s ease-in-out;
