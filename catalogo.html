@@ -38,5 +38,16 @@
   <footer>
     <p>&copy; 2025 Allison Jewelry</p>
   </footer>
+  <!-- Carrito flotante -->
+<div id="carrito" style="position: fixed; bottom: 20px; right: 20px; width: 300px; background: white; border: 2px solid #d4af37; border-radius: 10px; padding: 1rem; box-shadow: 0 0 10px rgba(0,0,0,0.15); z-index: 1000;">
+  <h3>🛒 Carrito</h3>
+  <div id="carrito-items" style="max-height: 150px; overflow-y: auto;"></div>
+  <p id="carrito-total">Total: $0</p>
+  <button onclick="vaciarCarrito()">Vaciar</button>
+</div>
+
+<!-- Script del carrito -->
+<script src="carrito.js"></script>
+
 </body>
 </html>
