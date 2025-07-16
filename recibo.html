@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recibo de Compra</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Recibo de Compra</h1>
+  </header>
+
+  <main style="padding: 1rem;">
+    <section id="detalles-recibo"></section>
+    <button onclick="window.print()">🖨️ Imprimir Recibo</button>
+    <a href="index.html"><button>Volver al inicio</button></a>
+  </main>
+
+  <footer style="padding: 1rem;">
+    <p>&copy; 2025 Allison Jewelry</p>
+  </footer>
+
+  <script>
+    const contenedor = document.getElementById("detalles-recibo");
+    const pedido = JSON.parse(localStorage.getItem("pedidoConfirmado"));
+
+    if (!pedido) {
+      contenedor.innerHTML = "<p>No hay ningún pedido registrado.</p>";
+    } else {
+      let total = 0;
+      contenedor.innerHTML = `
+        <h2>Cliente: ${pedido.nombre}</h2>
+        <p><strong>Dirección:</strong> ${pedido.direccion}</p>
+        <p><strong>Correo:</strong> ${pedido.correo}</p>
+        <p><strong>Método de pago:</strong> ${pedido.metodo}</p>
+        <h3>Productos:</h3>
+        <ul>
+          ${pedido.carrito.map(p => {
+            total += p.precio * p.cantidad;
+            return `<li>${p.nombre} (x${p.cantidad}) - $${p.precio * p.cantidad}</li>`;
+          }).join("")}
+        </ul>
+        <p><strong>Total pagado:</strong> $${total}</p>
+      `;
+      localStorage.removeItem("pedidoConfirmado"); // limpia al mostrar
+    }
+  </script>
+</body>
+</html>
