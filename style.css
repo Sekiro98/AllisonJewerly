@@ -52,7 +52,7 @@ nav a:hover {
   background: url('joyeria-bg.jpg') no-repeat center/cover;
   color: #ffff00;
   text-align: center;
-  padding: 8rem 4rem;
+  padding: 6rem 3rem;
   animation: fadeIn 1.5s ease-in-out;
 }
 
