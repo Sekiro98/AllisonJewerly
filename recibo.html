@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recibo de Compra</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
 <body>
   <header>
@@ -26,40 +28,39 @@
   </footer>
 
   <script>
-    const contenedor = document.getElementById("detalles-recibo");
-    const pedido = JSON.parse(localStorage.getItem("pedidoConfirmado"));
-
-    if (!pedido) {
-      contenedor.innerHTML = "<p>No hay ningún pedido registrado.</p>";
-    } else {
-      let total = 0;
-      contenedor.innerHTML = `
-        <h2>Cliente: ${pedido.nombre}</h2>
-        <p><strong>Dirección:</strong> ${pedido.direccion}</p>
-        <p><strong>Correo:</strong> ${pedido.correo}</p>
-        <p><strong>Método de pago:</strong> ${pedido.metodo}</p>
-        <h3>Productos:</h3>
-        <ul>
-          ${pedido.carrito.map(p => {
-            total += p.precio * p.cantidad;
-            return `<li>${p.nombre} (x${p.cantidad}) - $${p.precio * p.cantidad}</li>`;
-          }).join("")}
-        </ul>
-        <p><strong>Total pagado:</strong> $${total}</p>
-      `;
-      <script type="module">
-  import { jsPDF } from "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js";
-
+  const contenedor = document.getElementById("detalles-recibo");
   const pedido = JSON.parse(localStorage.getItem("pedidoConfirmado"));
 
-  window.descargarPDF = () => {
-    if (!pedido) {
-      alert("No hay datos del pedido.");
-      return;
-    }
+  if (!pedido) {
+    contenedor.innerHTML = "<p>No hay ningún pedido registrado.</p>";
+  } else {
+    let total = 0;
+    contenedor.innerHTML = `
+      <h2>Cliente: ${pedido.nombre}</h2>
+      <p><strong>Dirección:</strong> ${pedido.direccion}</p>
+      <p><strong>Correo:</strong> ${pedido.correo}</p>
+      <p><strong>Método de pago:</strong> ${pedido.metodo}</p>
+      <h3>Productos:</h3>
+      <ul>
+        ${pedido.carrito.map(p => {
+          total += p.precio * p.cantidad;
+          return `<li>${p.nombre} (x${p.cantidad}) - $${p.precio * p.cantidad}</li>`;
+        }).join("")}
+      </ul>
+      <p><strong>Total pagado:</strong> $${total}</p>
+    `;
+  }
 
+  // ✅ Función para descargar como PDF
+  function descargarPDF() {
+    const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
     let y = 10;
+
+    if (!pedido) {
+      alert("No hay pedido disponible.");
+      return;
+    }
 
     doc.setFontSize(16);
     doc.text("🧾 Recibo de Compra - Allison Jewelry", 10, y);
@@ -85,10 +86,10 @@
     doc.text(`Total: $${total}`, 10, y);
 
     doc.save("recibo_allison_jewelry.pdf");
-  };
+  }
+
+  window.descargarPDF = descargarPDF;
 </script>
 
-    }
-  </script>
 </body>
 </html>
