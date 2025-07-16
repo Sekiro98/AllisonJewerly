@@ -1,3 +1,4 @@
+// carrito.js
 let carrito = [];
 
 function agregarAlCarrito(nombre, precio) {
@@ -25,4 +26,3 @@ function vaciarCarrito() {
   carrito = [];
   actualizarCarrito();
 }
-
