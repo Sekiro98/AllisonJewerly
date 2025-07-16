@@ -53,6 +53,7 @@ nav a:hover {
   color: white;
   text-align: center;
   padding: 6rem 2rem;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .hero h2 {
@@ -95,6 +96,7 @@ nav a:hover {
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
   transition: transform 0.3s ease;
+  animation: fadeUp 1s ease;
 }
 
 .productos article:hover {
@@ -157,4 +159,34 @@ footer {
   margin-top: 2rem;
 }
 
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Diseño responsive para móviles */
+@media (max-width: 768px) {
+  .productos, .galeria {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .productos article, form {
+    width: 90%;
+  }
+}
