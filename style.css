@@ -38,3 +38,28 @@ nav a {
   font-weight: bold;
   border-radius: 10px;
 }
+/* Estilo general para todas las imágenes del sitio */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+/* Estilo específico para productos en el catálogo */
+.productos img {
+  width: 220px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Estilo específico para galería de imágenes */
+.galeria img {
+  width: 300px;
+  height: auto;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
