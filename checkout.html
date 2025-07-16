@@ -61,20 +61,37 @@
     }
 
     function confirmarCompra() {
-      const nombre = document.getElementById("nombre").value.trim();
-      const direccion = document.getElementById("direccion").value.trim();
-      const correo = document.getElementById("correo").value.trim();
-      const metodo = document.getElementById("metodoPago").value;
+  const nombre = document.getElementById("nombre").value.trim();
+  const direccion = document.getElementById("direccion").value.trim();
+  const correo = document.getElementById("correo").value.trim();
+  const metodo = document.getElementById("metodoPago").value;
 
-      if (!nombre || !direccion || !correo || !metodo) {
-        alert("Por favor, completa todos los campos.");
-        return false;
+  if (!nombre || !direccion || !correo || !metodo) {
+    alert("Por favor, completa todos los campos.");
+    return false;
+  }
+
+  const resumenPedido = {
+    nombre,
+    direccion,
+    correo,
+    metodo,
+    carrito
+  };
+
+  localStorage.setItem("pedidoConfirmado", JSON.stringify(resumenPedido));
+  localStorage.removeItem("carrito");
+  window.location.href = "recibo.html";
+  return false;
+}
+
       }
 
-      alert(`¡Gracias por tu compra, ${nombre}!\nTu pedido será enviado a: ${direccion}`);
-      localStorage.removeItem("carrito");
-      window.location.href = "index.html";
-      return false; // para evitar recarga del formulario
+      <div style="margin-top: 1rem;">
+  <button type="submit">Confirmar pedido</button>
+  <button type="button" onclick="window.print()">🖨️ Imprimir factura</button>
+</div>
+
     }
   </script>
 </body>
