@@ -44,55 +44,49 @@
   </footer>
 
   <script>
-    const resumen = document.getElementById("resumen-compra");
-    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const resumen = document.getElementById("resumen-compra");
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    if (carrito.length === 0) {
-      resumen.innerHTML = "<p>No hay productos en tu carrito.</p>";
-      document.getElementById("formulario-compra").style.display = "none";
-    } else {
-      let total = 0;
-      resumen.innerHTML = "<h2>Productos en tu pedido:</h2><ul>" +
-        carrito.map(item => {
-          total += item.precio * item.cantidad;
-          return `<li>${item.nombre} (x${item.cantidad}) - $${item.precio * item.cantidad}</li>`;
-        }).join("") +
-        "</ul><p><strong>Total:</strong> $" + total + "</p>";
-    }
-
-    function confirmarCompra() {
-  const nombre = document.getElementById("nombre").value.trim();
-  const direccion = document.getElementById("direccion").value.trim();
-  const correo = document.getElementById("correo").value.trim();
-  const metodo = document.getElementById("metodoPago").value;
-
-  if (!nombre || !direccion || !correo || !metodo) {
-    alert("Por favor, completa todos los campos.");
-    return false;
+  if (carrito.length === 0) {
+    resumen.innerHTML = "<p>No hay productos en tu carrito.</p>";
+    document.getElementById("formulario-compra").style.display = "none";
+  } else {
+    let total = 0;
+    resumen.innerHTML = "<h2>Productos en tu pedido:</h2><ul>" +
+      carrito.map(item => {
+        total += item.precio * item.cantidad;
+        return `<li>${item.nombre} (x${item.cantidad}) - $${item.precio * item.cantidad}</li>`;
+      }).join("") +
+      "</ul><p><strong>Total:</strong> $" + total + "</p>";
   }
 
-  const resumenPedido = {
-    nombre,
-    direccion,
-    correo,
-    metodo,
-    carrito
-  };
+  // ✅ Captura del formulario correctamente y evita recarga
+  document.getElementById("formulario-compra").addEventListener("submit", function(e) {
+    e.preventDefault(); // 🔴 Evita recarga
 
-  localStorage.setItem("pedidoConfirmado", JSON.stringify(resumenPedido));
-  localStorage.removeItem("carrito");
-  window.location.href = "recibo.html";
-  return false;
-}
+    const nombre = document.getElementById("nombre").value.trim();
+    const direccion = document.getElementById("direccion").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const metodo = document.getElementById("metodoPago").value;
 
-      }
-
-      <div style="margin-top: 1rem;">
-  <button type="submit">Confirmar pedido</button>
-  <button type="button" onclick="window.print()">🖨️ Imprimir factura</button>
-</div>
-
+    if (!nombre || !direccion || !correo || !metodo) {
+      alert("Por favor, completa todos los campos.");
+      return;
     }
-  </script>
+
+    const resumenPedido = {
+      nombre,
+      direccion,
+      correo,
+      metodo,
+      carrito
+    };
+
+    localStorage.setItem("pedidoConfirmado", JSON.stringify(resumenPedido));
+    localStorage.removeItem("carrito");
+    window.location.href = "recibo.html";
+  });
+</script>
+
 </body>
 </html>
