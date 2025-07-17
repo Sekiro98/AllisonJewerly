@@ -2,54 +2,48 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pago | Allison Jewelry</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Métodos de Pago - Allison Jewelry</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <h1 style="text-align:center">💳 Pasarela de Pago</h1>
-  </header>
 
-  <main style="max-width: 500px; margin: auto;">
-    <form id="form-pago">
-      <label for="nombre">Nombre en la tarjeta:</label>
-      <input type="text" id="nombre" required>
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="index.html"><img src="diamante.png" alt="Logo" /></a>
+      <h1>Allison Jewelry</h1>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
 
-      <label for="tarjeta">Número de tarjeta:</label>
-      <input type="text" id="tarjeta" maxlength="16" required>
+<section class="pago">
+  <div class="container">
+    <h2>Opciones de Pago</h2>
+    <p>Para garantizar una experiencia de compra segura, te ofrecemos múltiples métodos de pago:</p>
+    <ul>
+      <li><strong>Tarjeta de Crédito/Débito:</strong> Visa, MasterCard, American Express</li>
+      <li><strong>PayPal:</strong> pagos@allisonjewelry.com</li>
+      <li><strong>Zelle:</strong> (402) 123-4567</li>
+      <li><strong>Transferencia Bancaria:</strong> Solicita los datos por correo</li>
+      <li><strong>CashApp:</strong> $AllisonJewelry</li>
+    </ul>
+    <p>Para realizar tu pedido, contáctanos por correo o WhatsApp y te guiaremos con el proceso.</p>
+    <a href="mailto:info@allisonjewelry.com" class="btn">Contactar Ahora</a>
+  </div>
+</section>
 
-      <label for="expira">Fecha de expiración (MM/AA):</label>
-      <input type="text" id="expira" required>
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Allison Jewelry. Todos los derechos reservados.</p>
+  </div>
+</footer>
 
-      <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" maxlength="4" required>
-
-      <p id="total-pago" style="font-weight: bold;">Total: $0</p>
-      <button type="submit">Pagar ahora</button>
-    </form>
-  </main>
-
-  <footer>
-    <p style="text-align: center;">&copy; 2025 Allison Jewelry</p>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const totalElem = document.getElementById("total-pago");
-      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      const total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-      totalElem.innerText = `Total: $${total}`;
-
-      document.getElementById("form-pago").addEventListener("submit", e => {
-        e.preventDefault();
-
-        // Validación mínima (solo simulación)
-        alert("✅ Pago procesado correctamente.");
-        localStorage.removeItem("carrito");
-        window.location.href = "confirmacion.html";
-      });
-    });
-  </script>
 </body>
 </html>
