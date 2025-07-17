@@ -26,12 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function actualizarCarrito() {
+    mostrarToast(`${nombre} agregado al carrito ✅`);
     const contenedor = document.getElementById("carrito-items");
     if (!contenedor) return;
 
     contenedor.innerHTML = "";
     let total = 0;
-    mostrarToast(`${nombre} agregado al carrito ✅`);
     carrito.forEach((item, index) => {
       const div = document.createElement("div");
       div.classList.add("item-carrito");
