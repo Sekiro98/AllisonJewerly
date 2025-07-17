@@ -11,77 +11,57 @@
   <header class="header">
     <div class="container">
       <div class="logo">
-        <img src="logo.png" alt="Allison Jewelry Logo" />
+        <img src="diamante.png" alt="Logo Allison Jewelry" />
         <h1>Allison Jewelry</h1>
       </div>
       <nav class="nav">
-        <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
-        <a href="#coleccion" data-es="Colección" data-en="Collection">Colección</a>
-        <a href="#testimonios" data-es="Testimonios" data-en="Testimonials">Testimonios</a>
-        <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+        <a href="#inicio">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
       </nav>
-      <div class="lang-switch">
-        <button onclick="setLanguage('es')">ES</button>
-        <button onclick="setLanguage('en')">EN</button>
-      </div>
     </div>
   </header>
 
   <section id="inicio" class="hero">
     <div class="container">
-      <h2 data-es="Joyas que cuentan tu historia" data-en="Jewelry that tells your story">
-        Joyas que cuentan tu historia
-      </h2>
-      <p data-es="Diseños únicos con elegancia y estilo." data-en="Unique designs with elegance and style.">
-        Diseños únicos con elegancia y estilo.
-      </p>
-      <a href="#coleccion" class="btn" data-es="Ver Colección" data-en="View Collection">Ver Colección</a>
+      <h2>Joyas que iluminan tu estilo</h2>
+      <p>Elegancia atemporal, calidad garantizada.</p>
+      <a href="catalogo.html" class="btn">Ver Catálogo</a>
     </div>
   </section>
 
-  <section id="coleccion" class="productos">
+  <section id="servicios" class="servicios">
     <div class="container">
-      <h3 data-es="Colección Destacada" data-en="Featured Collection">Colección Destacada</h3>
-      <div class="product-grid">
-        <div class="product">
-          <img src="anillo1.jpg" alt="Anillo de oro" />
-          <p data-es="Anillo de Oro 18k" data-en="18k Gold Ring">Anillo de Oro 18k</p>
-        </div>
-        <div class="product">
-          <img src="collar1.jpg" alt="Collar con diamante" />
-          <p data-es="Collar con Diamante" data-en="Diamond Necklace">Collar con Diamante</p>
-        </div>
-      </div>
+      <h3>Servicios</h3>
+      <ul>
+        <li>Diseños personalizados</li>
+        <li>Reparación de joyas</li>
+        <li>Grabado profesional</li>
+        <li>Asesoramiento en regalos</li>
+      </ul>
     </div>
   </section>
 
-  <section id="testimonios" class="testimonios">
+  <section class="pago">
     <div class="container">
-      <h3 data-es="Testimonios de Clientes" data-en="Customer Testimonials">Testimonios de Clientes</h3>
-      <div class="testimonial-grid">
-        <div class="testimonial">
-          <p data-es="“El anillo que compré es espectacular. ¡Gracias Allison Jewelry!”" data-en="“The ring I bought is amazing. Thank you Allison Jewelry!”">
-            “El anillo que compré es espectacular. ¡Gracias Allison Jewelry!”
-          </p>
-          <span>- Laura G.</span>
-        </div>
-        <div class="testimonial">
-          <p data-es="“La calidad de las joyas es impecable. Volveré a comprar.”" data-en="“The jewelry quality is outstanding. I’ll buy again.”">
-            “La calidad de las joyas es impecable. Volveré a comprar.”
-          </p>
-          <span>- Carlos M.</span>
-        </div>
-      </div>
+      <h3>Métodos de Pago</h3>
+      <p>Aceptamos:</p>
+      <ul>
+        <li>Tarjetas de crédito y débito</li>
+        <li>PayPal</li>
+        <li>Transferencias bancarias</li>
+        <li>Zelle / CashApp</li>
+      </ul>
+      <a href="pago.html" class="btn">Ver Detalles</a>
     </div>
   </section>
 
   <section id="contacto" class="contacto">
     <div class="container">
-      <h3 data-es="Contáctanos" data-en="Contact Us">Contáctanos</h3>
-      <p data-es="¿Tienes una consulta? Estamos para ayudarte." data-en="Have a question? We're here to help.">
-        ¿Tienes una consulta? Estamos para ayudarte.
-      </p>
-      <a href="mailto:info@allisonjewelry.com" class="btn" data-es="Enviar Correo" data-en="Send Email">Enviar Correo</a>
+      <h3>Contáctanos</h3>
+      <p>¿Tienes dudas o quieres realizar un pedido?</p>
+      <a href="mailto:info@allisonjewelry.com" class="btn">Escríbenos</a>
     </div>
   </section>
 
@@ -91,19 +71,5 @@
     </div>
   </footer>
 
-  <script>
-    function setLanguage(lang) {
-      document.querySelectorAll("[data-es]").forEach(el => {
-        el.textContent = el.dataset[lang];
-      });
-    }
-  </script>
-
 </body>
 </html>
-
-    }
-  </script>
-</body>
-</html>
-
