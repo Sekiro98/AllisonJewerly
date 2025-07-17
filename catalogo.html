@@ -1,115 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Allison Jewelry | Joyería Fina de Lujo</title>
-  <meta name="description" content="Joyería fina, reparaciones, alquiler y venta de piezas exclusivas. Allison Jewelry: lujo y elegancia para cada ocasión." />
-  <meta name="keywords" content="joyas, anillos, collares, alquiler de joyas, joyería de lujo, oro, diamantes, Allison Jewelry" />
-  <meta name="author" content="Allison Jewelry" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Allison Jewelry | Joyería de Lujo" />
-  <meta property="og:description" content="Venta, renta y reparación de joyas exclusivas. Vive la elegancia con Allison Jewelry." />
-  <meta property="og:image" content="https://sekiro98.github.io/AllisonJewerly/img/logo.png" />
-  <meta property="og:url" content="https://sekiro98.github.io/AllisonJewerly/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Allison Jewelry | Joyería de Lujo" />
-  <meta name="twitter:description" content="Descubre joyas únicas con estilo y distinción." />
-  <meta name="twitter:image" content="https://sekiro98.github.io/AllisonJewerly/img/logo.png" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/logo.png" />
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catálogo - Allison Jewelry</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
-</head>
-  <script>
-  function cerrarCarrito() {
-    document.getElementById("carrito").style.display = "none";
-    document.getElementById("abrirCarritoBtn").style.display = "block";
-  }
-
-  function abrirCarrito() {
-    document.getElementById("carrito").style.display = "block";
-    document.getElementById("abrirCarritoBtn").style.display = "none";
-  }
-</script>
-  <div id="toast" style="display: none;"></div>
 <body>
-  <header>
-    <h1>Catálogo de Joyas</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="catalogo.html">Catálogo</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="galeria.html">Galería</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
+
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="index.html"><img src="diamante.png" alt="Logo" /></a>
+      <h1>Allison Jewelry</h1>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="index.html#contacto">Contacto</a>
     </nav>
-  </header>
-
-  <main>
-    <section class="productos">
-     <article>
-  <img src="img/anillo1.jpg" alt="Anillo de oro 18k">
-  <h3>Anillo de oro 18k</h3>
-  <p>$350 USD</p>
-  <button class="agregar-carrito" 
-          data-nombre="Anillo de oro 18k" 
-          data-precio="350" 
-          data-imagen="img/anillo1.jpg">
-    Agregar al carrito
-  </button>
-</article>
-
-<article>
-  <img src="img/collar1.jpg" alt="Collar con diamantes">
-  <h3>Collar con diamantes</h3>
-  <p>$780 USD</p>
-  <button class="agregar-carrito" 
-          data-nombre="Collar con diamantes" 
-          data-precio="780" 
-          data-imagen="img/collar1.jpg">
-    Agregar al carrito
-  </button>
-</article>
-
-    </section>
-  </main>
-
-  <!-- Carrito flotante -->
-  <!-- Carrito flotante con botón de cerrar -->
-<div id="carrito" style="position: fixed; bottom: 20px; right: 20px; width: 300px; max-width: 90vw; background: rgba(19,40,38,0.95); color: #f5f5f5; border: 2px solid #d4af37; border-radius: 10px; padding: 1rem; box-shadow: 0 0 15px rgba(0,0,0,0.3); z-index: 1000;">
-  <div style="display: flex; justify-content: space-between; align-items: center;">
-    <h3 style="margin: 0; font-size: 1.2rem; color: #d4af37;">🛒 Carrito</h3>
-    <button onclick="cerrarCarrito()" style="background: none; border: none; color: #f5f5f5; font-size: 1.2rem; cursor: pointer;">❌</button>
   </div>
-  <div id="carrito-items" style="max-height: 150px; overflow-y: auto; margin-top: 0.5rem;"></div>
-  <p id="carrito-total">Total: $0</p>
-  <button onclick="vaciarCarrito()">Vaciar</button>
-  <button onclick="window.location.href='checkout.html'">Finalizar compra</button>
-</div>
+</header>
 
-<!-- Botón flotante para abrir carrito -->
-<button id="abrirCarritoBtn" onclick="abrirCarrito()" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #d4af37; color: #0d1f1e; font-weight: bold; border: none; padding: 10px 15px; border-radius: 50px; cursor: pointer; z-index: 999;">
-  🛒 Abrir carrito
-</button>
+<section class="productos">
+  <div class="container">
+    <h2>Catálogo de Productos</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="anillo1.jpg" alt="Anillo Elegante" />
+        <h4>Anillo Elegante Oro 18k</h4>
+        <p>$280.00</p>
+        <a href="pago.html" class="btn">Comprar</a>
+      </div>
+      <div class="product">
+        <img src="collar1.jpg" alt="Collar con Diamante" />
+        <h4>Collar con Diamante</h4>
+        <p>$420.00</p>
+        <a href="pago.html" class="btn">Comprar</a>
+      </div>
+      <div class="product">
+        <img src="aretes1.jpg" alt="Aretes de Lujo" />
+        <h4>Aretes de Lujo</h4>
+        <p>$150.00</p>
+        <a href="pago.html" class="btn">Comprar</a>
+      </div>
+    </div>
+  </div>
+</section>
 
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 Allison Jewelry. Todos los derechos reservados.</p>
+  </div>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 Allison Jewelry</p>
-  </footer>
-
-  <!-- Script del carrito -->
-  <script src="carrito.js"></script>
 </body>
 </html>
-
