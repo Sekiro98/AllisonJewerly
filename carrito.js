@@ -70,3 +70,20 @@ document.addEventListener("DOMContentLoaded", () => {
   window.vaciarCarrito = vaciarCarrito;
   window.eliminarItem = eliminarItem;
 });
+function mostrarToast(mensaje) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.innerText = mensaje;
+  toast.style.display = "block";
+
+  // Reinicia animaciones
+  toast.style.animation = "none";
+  void toast.offsetHeight; // Reflow
+  toast.style.animation = "fadein 0.5s, fadeout 0.5s 2.5s";
+
+  // Oculta después de 3s
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 3000);
+}
