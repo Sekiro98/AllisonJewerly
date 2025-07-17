@@ -1,4 +1,3 @@
-/* RESET Y BASE */
 * {
   margin: 0;
   padding: 0;
@@ -7,17 +6,15 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
-  color: #1c1c1c;
-  line-height: 1.6;
+  background-color: #111;
+  color: #f5f5f5;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
-/* CONTENEDOR GENERAL */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -25,17 +22,11 @@ a {
   padding: 20px 0;
 }
 
-/* ENCABEZADO */
+/* HEADER */
 .header {
   background-color: #1c1c1c;
   color: #f5d76e;
   padding: 20px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,35 +50,20 @@ a {
 }
 
 .nav a:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
-.lang-switch button {
-  background: transparent;
-  border: 1px solid #f5d76e;
-  color: #f5d76e;
-  padding: 5px 10px;
-  margin-left: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.lang-switch button:hover {
-  background: #f5d76e;
-  color: #1c1c1c;
-}
-
-/* HERO SECTION */
+/* HERO */
 .hero {
-  background-color: #0d2b22;
+  background: url('fondo-joyeria.jpg') no-repeat center center/cover;
   color: white;
   text-align: center;
-  padding: 100px 20px;
+  padding: 120px 20px;
 }
 
 .hero h2 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .hero p {
@@ -99,109 +75,74 @@ a {
   background-color: #f5d76e;
   color: #1c1c1c;
   padding: 12px 25px;
-  border-radius: 30px;
+  border-radius: 25px;
   font-weight: bold;
-  display: inline-block;
   transition: background 0.3s;
+  display: inline-block;
 }
 
 .btn:hover {
-  background-color: #e0c85d;
+  background-color: #e6c752;
 }
 
-/* PRODUCTOS */
-.productos {
-  background: #ffffff;
-  padding: 80px 20px;
+/* SERVICIOS */
+.servicios {
+  background-color: #1e1e1e;
+  padding: 60px 20px;
   text-align: center;
 }
 
-.productos h3 {
+.servicios h3 {
   font-size: 2rem;
-  color: #1c1c1c;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  color: #f5d76e;
 }
 
-.product-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+.servicios ul {
+  list-style: none;
+  font-size: 1.1rem;
+  line-height: 2;
 }
 
-.product {
-  width: 250px;
-}
-
-.product img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.product p {
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* TESTIMONIOS */
-.testimonios {
-  background-color: #f0f0f0;
-  padding: 80px 20px;
+/* PAGOS */
+.pago {
+  background-color: #141414;
+  padding: 60px 20px;
   text-align: center;
 }
 
-.testimonios h3 {
+.pago h3 {
+  color: #f5d76e;
   font-size: 2rem;
-  margin-bottom: 40px;
-  color: #1c1c1c;
+  margin-bottom: 20px;
 }
 
-.testimonial-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.testimonial {
-  background-color: white;
-  border-left: 5px solid #f5d76e;
-  padding: 20px;
-  width: 280px;
-  font-style: italic;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-}
-
-.testimonial span {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
-  color: #333;
+.pago ul {
+  list-style: none;
+  line-height: 2;
 }
 
 /* CONTACTO */
 .contacto {
-  background: #ffffff;
-  padding: 80px 20px;
+  background-color: #1e1e1e;
+  padding: 60px 20px;
   text-align: center;
 }
 
 .contacto h3 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  color: #f5d76e;
 }
 
 .contacto p {
-  font-size: 1rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 /* FOOTER */
 .footer {
-  background-color: #1c1c1c;
-  color: #f5d76e;
+  background-color: #111;
+  color: #888;
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
