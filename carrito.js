@@ -5,16 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   actualizarCarrito();
 
-  window.agregarAlCarrito = function(nombre, precio) {
-    const existente = carrito.find((item) => item.nombre === nombre);
-    if (existente) {
-      existente.cantidad += 1;
-    } else {
-      carrito.push({ nombre, precio, cantidad: 1 });
-    }
-    guardarCarrito();
-    actualizarCarrito();
-  };
+  window.agregarAlCarrito = function(nombre, precio, imagen) {
+  const existente = carrito.find((item) => item.nombre === nombre);
+  if (existente) {
+    existente.cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1, imagen });
+  }
+  guardarCarrito();
+  actualizarCarrito();
+};
+
 
   window.vaciarCarrito = function() {
     carrito = [];
