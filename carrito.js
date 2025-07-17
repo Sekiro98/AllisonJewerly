@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     contenedor.innerHTML = "";
     let total = 0;
-
+    mostrarToast(`${nombre} agregado al carrito ✅`);
     carrito.forEach((item, index) => {
       const div = document.createElement("div");
       div.classList.add("item-carrito");
