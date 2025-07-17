@@ -3,42 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Allison Jewelry | Inicio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway&display=swap" rel="stylesheet">
+  <title>Allison Jewelry</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-  <header class="navbar">
-    <div class="logo-container">
-      <img src="img/logo.png" alt="Logo Allison Jewelry" class="logo-img" />
-      <h1 class="logo-text">Allison Jewelry</h1>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="Allison Jewelry Logo" />
+        <h1>Allison Jewelry</h1>
+      </div>
+      <div class="language-switch">
+        <button onclick="setLanguage('es')">ES</button>
+        <button onclick="setLanguage('en')">EN</button>
+      </div>
     </div>
-    <nav>
-      <ul class="nav-list">
-        <li><a href="index.html" class="active">Inicio</a></li>
-        <li><a href="catalogo.html">Catálogo</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="galeria.html">Galería</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-        <li><a href="index-en.html">EN</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Lujo que brilla contigo</h2>
-        <p>Venta, alquiler y reparación de joyas exclusivas.</p>
-        <a href="catalogo.html" class="boton">Explorar Catálogo</a>
-      </div>
-    </section>
-  </main>
+  <section class="hero">
+    <div class="container">
+      <h2 data-es="Joyas que cuentan tu historia" data-en="Jewelry that tells your story">
+        Joyas que cuentan tu historia
+      </h2>
+      <p data-es="Diseños únicos con elegancia y estilo." data-en="Unique designs with elegance and style.">
+        Diseños únicos con elegancia y estilo.
+      </p>
+      <a href="#productos" class="btn" data-es="Ver Colección" data-en="View Collection">Ver Colección</a>
+    </div>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Allison Jewelry</p>
+  <section id="productos" class="productos">
+    <div class="container">
+      <h3 data-es="Colección Destacada" data-en="Featured Collection">Colección Destacada</h3>
+      <div class="product-grid">
+        <div class="product">
+          <img src="anillo1.jpg" alt="Anillo de oro" />
+          <p data-es="Anillo de Oro 18k" data-en="18k Gold Ring">Anillo de Oro 18k</p>
+        </div>
+        <div class="product">
+          <img src="collar1.jpg" alt="Collar con diamante" />
+          <p data-es="Collar con Diamante" data-en="Diamond Necklace">Collar con Diamante</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <div class="container">
+      <h3 data-es="Contáctanos" data-en="Contact Us">Contáctanos</h3>
+      <p data-es="¿Tienes una consulta? Estamos para ayudarte." data-en="Have a question? We're here to help.">
+        ¿Tienes una consulta? Estamos para ayudarte.
+      </p>
+      <a href="mailto:info@allisonjewelry.com" class="btn" data-es="Enviar Correo" data-en="Send Email">Enviar Correo</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Allison Jewelry. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
+  <script>
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-es]").forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+    }
+  </script>
 </body>
 </html>
+
