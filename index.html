@@ -2,25 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Allison Jewelry</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
   <header class="header">
     <div class="container">
       <div class="logo">
         <img src="logo.png" alt="Allison Jewelry Logo" />
         <h1>Allison Jewelry</h1>
       </div>
-      <div class="language-switch">
+      <nav class="nav">
+        <a href="#inicio" data-es="Inicio" data-en="Home">Inicio</a>
+        <a href="#coleccion" data-es="Colección" data-en="Collection">Colección</a>
+        <a href="#testimonios" data-es="Testimonios" data-en="Testimonials">Testimonios</a>
+        <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+      </nav>
+      <div class="lang-switch">
         <button onclick="setLanguage('es')">ES</button>
         <button onclick="setLanguage('en')">EN</button>
       </div>
     </div>
   </header>
 
-  <section class="hero">
+  <section id="inicio" class="hero">
     <div class="container">
       <h2 data-es="Joyas que cuentan tu historia" data-en="Jewelry that tells your story">
         Joyas que cuentan tu historia
@@ -28,11 +35,11 @@
       <p data-es="Diseños únicos con elegancia y estilo." data-en="Unique designs with elegance and style.">
         Diseños únicos con elegancia y estilo.
       </p>
-      <a href="#productos" class="btn" data-es="Ver Colección" data-en="View Collection">Ver Colección</a>
+      <a href="#coleccion" class="btn" data-es="Ver Colección" data-en="View Collection">Ver Colección</a>
     </div>
   </section>
 
-  <section id="productos" class="productos">
+  <section id="coleccion" class="productos">
     <div class="container">
       <h3 data-es="Colección Destacada" data-en="Featured Collection">Colección Destacada</h3>
       <div class="product-grid">
@@ -43,6 +50,26 @@
         <div class="product">
           <img src="collar1.jpg" alt="Collar con diamante" />
           <p data-es="Collar con Diamante" data-en="Diamond Necklace">Collar con Diamante</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonios" class="testimonios">
+    <div class="container">
+      <h3 data-es="Testimonios de Clientes" data-en="Customer Testimonials">Testimonios de Clientes</h3>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p data-es="“El anillo que compré es espectacular. ¡Gracias Allison Jewelry!”" data-en="“The ring I bought is amazing. Thank you Allison Jewelry!”">
+            “El anillo que compré es espectacular. ¡Gracias Allison Jewelry!”
+          </p>
+          <span>- Laura G.</span>
+        </div>
+        <div class="testimonial">
+          <p data-es="“La calidad de las joyas es impecable. Volveré a comprar.”" data-en="“The jewelry quality is outstanding. I’ll buy again.”">
+            “La calidad de las joyas es impecable. Volveré a comprar.”
+          </p>
+          <span>- Carlos M.</span>
         </div>
       </div>
     </div>
@@ -69,6 +96,12 @@
       document.querySelectorAll("[data-es]").forEach(el => {
         el.textContent = el.dataset[lang];
       });
+    }
+  </script>
+
+</body>
+</html>
+
     }
   </script>
 </body>
