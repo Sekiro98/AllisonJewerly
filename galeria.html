@@ -5,10 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Galería | Allison Jewelry</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" />
 </head>
 <body>
   <header>
-    <h1>Galería</h1>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <img src="img/logo.png" alt="Logo Allison Jewelry" style="height: 70px;">
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0;">Allison Jewelry</h1>
+    </div>
+
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -19,13 +24,34 @@
       </ul>
     </nav>
   </header>
+
   <main>
+    <h2 style="text-align: center; font-family: 'Playfair Display', serif;">Galería de Joyas</h2>
+
     <section class="galeria">
-      <img src="img/evento1.jpg" alt="Boda con joyas Allison" />
-      <img src="img/reparacion1.jpg" alt="Reparación de anillo" />
-      <img src="img/renta1.jpg" alt="Joya alquilada para gala" />
+      <a href="img/anillo1.jpg" data-lightbox="joyas" data-title="Anillo de oro 18k">
+        <img src="img/anillo1.jpg" alt="Anillo de oro 18k">
+      </a>
+      <a href="img/collar1.jpg" data-lightbox="joyas" data-title="Collar con diamantes">
+        <img src="img/collar1.jpg" alt="Collar con diamantes">
+      </a>
+      <a href="img/reparacion1.jpg" data-lightbox="joyas" data-title="Reparación de anillo">
+        <img src="img/reparacion1.jpg" alt="Reparación de anillo">
+      </a>
+      <a href="img/evento1.jpg" data-lightbox="joyas" data-title="Evento especial">
+        <img src="img/evento1.jpg" alt="Evento con joyas">
+      </a>
     </section>
   </main>
+
+  <footer>
+    <p>&copy; 2025 Allison Jewelry</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
+
   <footer>
     <p>&copy; 2025 Allison Jewelry</p>
   </footer>
