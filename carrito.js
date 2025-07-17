@@ -39,10 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     carrito.forEach((item, index) => {
       const div = document.createElement("div");
-      div.innerHTML = `
-        ${item.nombre} (x${item.cantidad}) - $${item.precio * item.cantidad}
-        <button onclick="eliminarItem(${index})" style="margin-left:10px;">❌</button>
-      `;
+     div.innerHTML = `
+  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+    <img src="${item.imagen}" alt="${item.nombre}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px;">
+    <div>
+      <strong>${item.nombre}</strong><br>
+      <small>(x${item.cantidad}) - $${item.precio * item.cantidad}</small>
+    </div>
+    <button onclick="eliminarItem(${index})" style="margin-left:auto;">❌</button>
+  </div>
+`;
+
       contenedor.appendChild(div);
       total += item.precio * item.cantidad;
     });
