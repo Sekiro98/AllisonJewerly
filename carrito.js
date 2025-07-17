@@ -4,6 +4,18 @@
 document.addEventListener("DOMContentLoaded", () => {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   actualizarCarrito();
+  // Agregar evento a todos los botones de productos
+const botones = document.querySelectorAll(".agregar-carrito");
+
+botones.forEach(boton => {
+  boton.addEventListener("click", () => {
+    const nombre = boton.dataset.nombre;
+    const precio = parseFloat(boton.dataset.precio);
+    const imagen = boton.dataset.imagen;
+    agregarAlCarrito(nombre, precio, imagen);
+  });
+});
+
 
   window.agregarAlCarrito = function(nombre, precio, imagen) {
   const existente = carrito.find((item) => item.nombre === nombre);
