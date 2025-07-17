@@ -8,7 +8,11 @@
 </head>
 <body>
   <header>
-    <h1>Contacto</h1>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      <img src="img/logo.png" alt="Logo Allison Jewelry" style="height: 70px;">
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0;">Allison Jewelry</h1>
+    </div>
+
     <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
@@ -19,24 +23,40 @@
       </ul>
     </nav>
   </header>
+
   <main>
-    <form action="#" method="post">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required />
+    <section>
+      <h2 style="text-align: center; font-family: 'Playfair Display', serif;">Contáctanos</h2>
 
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
+      <form action="#" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
 
-      <label for="mensaje">Mensaje:</label>
-      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required />
 
-      <button type="submit">Enviar</button>
-    </form>
-    <p>📞 WhatsApp: +1 234 567 8900</p>
-    <p>📍 Dirección: 123 Calle Principal, Ciudad, País</p>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <div style="max-width: 500px; margin: 2rem auto; text-align: center;">
+        <p><strong>Teléfono:</strong> +1 234 567 8900</p>
+        <p><strong>Email:</strong> hello@allisonjewelry.com</p>
+        <p><strong>Dirección:</strong> 123 Calle Principal, Ciudad, País</p>
+      </div>
+    </section>
   </main>
+
   <footer>
     <p>&copy; 2025 Allison Jewelry</p>
   </footer>
+
+  <!-- Botón de WhatsApp flotante -->
+  <a href="https://wa.me/12345678900" target="_blank"
+     style="position: fixed; bottom: 20px; right: 20px; z-index: 999; background: #25d366; color: white; padding: 12px 16px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+    💬 WhatsApp
+  </a>
 </body>
 </html>
