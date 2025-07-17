@@ -1,72 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Allison Jewelry | Joyería Fina de Lujo</title>
-  <meta name="description" content="Joyería fina, reparaciones, alquiler y venta de piezas exclusivas. Allison Jewelry: lujo y elegancia para cada ocasión." />
-  <meta name="keywords" content="joyas, anillos, collares, alquiler de joyas, joyería de lujo, oro, diamantes, Allison Jewelry" />
-  <meta name="author" content="Allison Jewelry" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Allison Jewelry | Joyería de Lujo" />
-  <meta property="og:description" content="Venta, renta y reparación de joyas exclusivas. Vive la elegancia con Allison Jewelry." />
-  <meta property="og:image" content="https://sekiro98.github.io/AllisonJewerly/img/logo.png" />
-  <meta property="og:url" content="https://sekiro98.github.io/AllisonJewerly/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Allison Jewelry | Joyería de Lujo" />
-  <meta name="twitter:description" content="Descubre joyas únicas con estilo y distinción." />
-  <meta name="twitter:image" content="https://sekiro98.github.io/AllisonJewerly/img/logo.png" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/logo.png" />
-
-  <!-- Estilos -->
+  <title>Allison Jewelry | Inicio</title>
   <link rel="stylesheet" href="style.css" />
-</head>
-
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-      <img src="img/logo.png" alt="Logo Allison Jewelry" style="height: 70px;">
-      <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 0;">Allison Jewelry</h1>
-    </div>
 
+  <header class="navbar">
+    <div class="logo-container">
+      <img src="img/logo.png" alt="Logo Allison Jewelry" class="logo-img" />
+      <h1 class="logo-text">Allison Jewelry</h1>
+    </div>
     <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
+      <ul class="nav-list">
+        <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="catalogo.html">Catálogo</a></li>
         <li><a href="servicios.html">Servicios</a></li>
         <li><a href="galeria.html">Galería</a></li>
         <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="index-en.html">EN</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero" style="text-align: center; padding: 5rem 1rem;">
-      <h2 style="font-size: 2.5rem; font-family: 'Playfair Display', serif;">Brillando contigo en cada ocasión</h2>
-      <p style="max-width: 600px; margin: 1rem auto; font-size: 1.1rem;">
-        Bienvenido a Allison Jewelry, donde cada pieza cuenta una historia de elegancia, distinción y momentos inolvidables. Encuentra anillos, collares y joyas únicas para ti o para regalar.
-      </p>
-      <a href="catalogo.html" class="boton">Ver Catálogo</a>
-    </section>
-
-    <section style="background: #132826; border-radius: 12px; padding: 2rem; margin: 2rem auto; max-width: 800px;">
-      <h3 style="font-family: 'Playfair Display', serif; color: #d4af37;">¿Quiénes somos?</h3>
-      <p>
-        Somos una joyería dedicada a la venta, renta y reparación de piezas únicas. Nos enorgullece ofrecer un servicio exclusivo con atención personalizada y calidad garantizada.
-      </p>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Lujo que brilla contigo</h2>
+        <p>Venta, alquiler y reparación de joyas exclusivas.</p>
+        <a href="catalogo.html" class="boton">Explorar Catálogo</a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Allison Jewelry | Todos los derechos reservados</p>
+    <p>&copy; 2025 Allison Jewelry</p>
   </footer>
+
 </body>
 </html>
