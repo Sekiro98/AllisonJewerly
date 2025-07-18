@@ -96,9 +96,36 @@ nav a:hover {
 
 /* Secciones de contenido */
 main {
-@@ -111,72 +125,131 @@ main {
+  padding: 2rem;
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
+}
+
+.categoria {
+  margin-bottom: 3rem;
+}
+
+.productos {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.productos article {
+  background: #1f1f1f;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  width: 220px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.productos img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .galeria img {
