@@ -8,14 +8,7 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: #eaeaea;
-  line-height: 1.6;
-  background: linear-gradient(-45deg, #0f0f0f, #222, #0f0f0f, #1b1b1b);
-  background-size: 400% 400%;
-  animation: movimientoFondo 20s ease infinite;
-}
+
 
 /* Encabezado */
 header {
@@ -52,14 +45,7 @@ nav a:hover {
   color: #fff;
 }
 
-/* Sección Hero */
-.hero {
-  position: relative;
-  overflow: hidden;
-  color: white;
-  text-align: center;
-  padding: 7rem 2rem;
-}
+
 
 .hero::before {
   content: "";
@@ -97,33 +83,35 @@ nav a:hover {
 /* Secciones de contenido */
 main {
   padding: 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
 }
 
-.productos, .galeria {
+.categoria {
+  margin-bottom: 3rem;
+}
+
+.productos {
   display: flex;
   gap: 2rem;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
-.productos article, .galeria img {
-  background: #1a1a1a;
-  border-radius: 12px;
+.productos article {
+  background: #1f1f1f;
   padding: 1rem;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  width: 220px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .productos img {
-  width: 220px;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.productos h3 {
-  color: #d4af37;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .galeria img {
@@ -208,6 +196,41 @@ form textarea {
   flex-wrap: wrap;
 }
 
+/* Autenticación y suscripción */
+.auth-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #d4af37;
+}
+
+.auth-form {
+  background: #1f1f1f;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 300px;
+}
+
+.subscribe {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.subscribe form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* Pie de página */
 footer {
   background-color: #000;
@@ -239,32 +262,3 @@ footer {
     max-width: 90%;
   }
 
-  .productos, .galeria {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@keyframes brilloFondo {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes movimientoFondo {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
