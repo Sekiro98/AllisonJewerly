@@ -10,9 +10,11 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #0f0f0f;
   color: #eaeaea;
   line-height: 1.6;
+  background: linear-gradient(-45deg, #0f0f0f, #222, #0f0f0f, #1b1b1b);
+  background-size: 400% 400%;
+  animation: movimientoFondo 20s ease infinite;
 }
 
 /* Encabezado */
@@ -52,10 +54,22 @@ nav a:hover {
 
 /* Sección Hero */
 .hero {
-  background: url('joyeria-bg.jpg') no-repeat center center / cover;
+  position: relative;
+  overflow: hidden;
   color: white;
   text-align: center;
   padding: 7rem 2rem;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #000, #d4af37, #333, #d4af37);
+  background-size: 400% 400%;
+  animation: brilloFondo 12s ease infinite;
+  opacity: 0.8;
+  z-index: -1;
 }
 
 .hero h2 {
@@ -144,6 +158,41 @@ form textarea {
   color: #fff;
 }
 
+/* Autenticación y suscripción */
+.auth-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #d4af37;
+}
+
+.auth-form {
+  background: #1f1f1f;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 300px;
+}
+
+.subscribe {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.subscribe form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* Pie de página */
 footer {
   background-color: #000;
@@ -178,5 +227,29 @@ footer {
   .productos, .galeria {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@keyframes brilloFondo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes movimientoFondo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
