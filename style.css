@@ -10,9 +10,11 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #0f0f0f;
   color: #eaeaea;
   line-height: 1.6;
+  background: linear-gradient(-45deg, #0f0f0f, #222, #0f0f0f, #1b1b1b);
+  background-size: 400% 400%;
+  animation: movimientoFondo 20s ease infinite;
 }
 
 /* Encabezado */
@@ -52,10 +54,22 @@ nav a:hover {
 
 /* Sección Hero */
 .hero {
-  background: url('joyeria-bg.jpg') no-repeat center center / cover;
+  position: relative;
+  overflow: hidden;
   color: white;
   text-align: center;
   padding: 7rem 2rem;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #000, #d4af37, #333, #d4af37);
+  background-size: 400% 400%;
+  animation: brilloFondo 12s ease infinite;
+  opacity: 0.8;
+  z-index: -1;
 }
 
 .hero h2 {
@@ -82,74 +96,7 @@ nav a:hover {
 
 /* Secciones de contenido */
 main {
-  padding: 2rem;
-}
-
-.productos, .galeria {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.productos article, .galeria img {
-  background: #1a1a1a;
-  border-radius: 12px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-}
-
-.productos img {
-  width: 220px;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
-
-.productos h3 {
-  color: #d4af37;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-}
-
-.galeria img {
-  width: 280px;
-  border-radius: 10px;
-}
-
-/* Formulario de contacto */
-form {
-  background: #1f1f1f;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: auto;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  border: 1px solid #444;
-  background: #111;
-  color: #fff;
-}
-
-/* Pie de página */
-footer {
-  background-color: #000;
-  color: #d4af37;
-  text-align: center;
-  padding: 1.5rem;
+@@ -153,30 +167,54 @@ footer {
   margin-top: 3rem;
 }
 
@@ -178,5 +125,29 @@ footer {
   .productos, .galeria {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@keyframes brilloFondo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes movimientoFondo {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
