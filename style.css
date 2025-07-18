@@ -96,7 +96,84 @@ nav a:hover {
 
 /* Secciones de contenido */
 main {
-@@ -153,30 +167,54 @@ footer {
+@@ -111,72 +125,131 @@ main {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+}
+
+.galeria img {
+  width: 280px;
+  border-radius: 10px;
+}
+
+/* Formulario de contacto */
+form {
+  background: #1f1f1f;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #111;
+  color: #fff;
+}
+
+/* Autenticación y suscripción */
+.auth-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #d4af37;
+}
+
+.auth-form {
+  background: #1f1f1f;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 300px;
+}
+
+.subscribe {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.subscribe form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Pie de página */
+footer {
+  background-color: #000;
+  color: #d4af37;
+  text-align: center;
+  padding: 1.5rem;
   margin-top: 3rem;
 }
 
