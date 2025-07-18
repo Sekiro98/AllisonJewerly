@@ -163,8 +163,10 @@ form textarea {
   display: flex;
   gap: 2rem;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   margin-top: 2rem;
+  min-height: 60vh;
 }
 
 .auth-container h2 {
@@ -174,11 +176,24 @@ form textarea {
 }
 
 .auth-form {
-  background: #1f1f1f;
+  background: rgba(255, 255, 255, 0.05);
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
   width: 300px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form input {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+}
+
+.auth-form button {
+  width: 100%;
 }
 
 .subscribe {
