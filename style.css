@@ -255,3 +255,19 @@ footer {
     background-position: 0% 50%;
   }
 }
+
+/* Floating logo */
+.floating-logo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 80px;
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
