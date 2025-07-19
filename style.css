@@ -8,14 +8,7 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: #eaeaea;
-  line-height: 1.6;
-  background: linear-gradient(-45deg, #0f0f0f, #222, #0f0f0f, #1b1b1b);
-  background-size: 400% 400%;
-  animation: movimientoFondo 20s ease infinite;
-}
+
 
 /* Encabezado */
 header {
@@ -52,14 +45,7 @@ nav a:hover {
   color: #fff;
 }
 
-/* Sección Hero */
-.hero {
-  position: relative;
-  overflow: hidden;
-  color: white;
-  text-align: center;
-  padding: 7rem 2rem;
-}
+
 
 .hero::before {
   content: "";
@@ -165,6 +151,56 @@ form textarea {
   display: flex;
   gap: 2rem;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  min-height: 60vh;
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #d4af37;
+}
+
+.auth-form {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  width: 300px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form input {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+}
+
+.auth-form button {
+  width: 100%;
+}
+
+.subscribe {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.subscribe form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Autenticación y suscripción */
+.auth-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 2rem;
 }
@@ -226,32 +262,3 @@ footer {
     max-width: 90%;
   }
 
-  .productos, .galeria {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@keyframes brilloFondo {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes movimientoFondo {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
