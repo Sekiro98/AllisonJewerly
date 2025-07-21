@@ -67,6 +67,7 @@ function actualizarCarrito() {
   document.getElementById('carrito-cantidad').textContent = cantidad;
   document.getElementById('carrito-total').textContent = total.toFixed(2);
 }
+    
 
 function vaciarCarrito() {
   carrito = [];
@@ -108,6 +109,8 @@ actualizarCarrito();
     <h4>Carrito</h4>
     <ul id="carrito-lista"></ul>
     <p><strong>Total: $<span id="carrito-total">0</span> USD</strong></p>
+    <a href="checkout.html" class="boton" style="width:100%;margin-bottom:8px;display:block;text-align:center;">Ir a pagar</a>
+
     <button onclick="vaciarCarrito()" class="boton" style="width:100%;">Vaciar carrito</button>
   </div>
 </div>
