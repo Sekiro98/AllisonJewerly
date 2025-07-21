@@ -10,7 +10,7 @@
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin: 2rem 0 1rem 0;
+      margin: 1.5rem 0 1rem 0;
     }
     .filtro-btn {
       background: #fff;
@@ -25,6 +25,17 @@
     .filtro-btn.activo, .filtro-btn:hover {
       background: #d4af37;
       color: #111;
+    }
+    /* Logo flotante opcional */
+    .floating-logo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      z-index: 1000;
+      opacity: 0.90;
+      border-radius: 12px;
+      box-shadow: 0 0 14px rgba(0,0,0,0.20);
     }
   </style>
 </head>
@@ -49,56 +60,53 @@
       <button class="filtro-btn" onclick="filtrarProductos('collar', this)">Collares</button>
     </div>
     <section class="productos">
-  <article data-tipo="anillo">
-    <img src="anillo1.jpg" alt="Anillo de oro 18k">
-    <h3>Anillo de oro 18k</h3>
-    <p>$350 USD</p>
-    <button class="boton">Agregar al carrito</button>
-  </article>
-  <article data-tipo="collar">
-    <img src="collar1.jpg" alt="Collar con diamantes">
-    <h3>Collar con diamantes</h3>
-    <p>$780 USD</p>
-    <button class="boton">Agregar al carrito</button>
-  </article>
-  <article data-tipo="anillo">
-    <img src="anillo1.jpg" alt="Anillo diseño flor">
-    <h3>Anillo diseño flor</h3>
-    <p>$420 USD</p>
-    <button class="boton">Agregar al carrito</button>
-  </article>
-  <article data-tipo="collar">
-    <img src="collar1.jpg" alt="Collar de esmeraldas">
-    <h3>Collar de esmeraldas</h3>
-    <p>$820 USD</p>
-    <button class="boton">Agregar al carrito</button>
-  </article>
-  <article data-tipo="anillo">
-    <img src="anillo1.jpg" alt="Anillo elegante plata">
-    <h3>Anillo elegante plata</h3>
-    <p>$199 USD</p>
-    <button class="boton">Agregar al carrito</button>
-  </article>
-  <article data-tipo="collar">
-    <img src="collar1.jpg" alt="Collar corazón">
-    <h3>Collar corazón</h3>
-    <p>$299 USD</p>
-    <button class="boton">Agregar al carrito</button>
-  </article>
-</section>
-
+      <article data-tipo="anillo">
+        <img src="anillo1.jpg" alt="Anillo de oro 18k">
+        <h3>Anillo de oro 18k</h3>
+        <p>$350 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="collar">
+        <img src="collar1.jpg" alt="Collar con diamantes">
+        <h3>Collar con diamantes</h3>
+        <p>$780 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="anillo">
+        <img src="anillo1.jpg" alt="Anillo diseño flor">
+        <h3>Anillo diseño flor</h3>
+        <p>$420 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="collar">
+        <img src="collar1.jpg" alt="Collar de esmeraldas">
+        <h3>Collar de esmeraldas</h3>
+        <p>$820 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="anillo">
+        <img src="anillo1.jpg" alt="Anillo elegante plata">
+        <h3>Anillo elegante plata</h3>
+        <p>$199 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="collar">
+        <img src="collar1.jpg" alt="Collar corazón">
+        <h3>Collar corazón</h3>
+        <p>$299 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+    </section>
   </main>
   <footer>
     <p>&copy; 2025 Allison Jewelry</p>
   </footer>
-  <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
+  <!-- Logo flotante opcional -->
+  <!-- <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" /> -->
   <script>
     function filtrarProductos(tipo, boton) {
-      // Cambia el estado activo del filtro visual
       document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('activo'));
       boton.classList.add('activo');
-
-      // Muestra/oculta productos según filtro
       document.querySelectorAll('.productos article').forEach(producto => {
         if (tipo === 'todos' || producto.getAttribute('data-tipo') === tipo) {
           producto.style.display = 'block';
