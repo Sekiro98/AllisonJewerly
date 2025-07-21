@@ -28,6 +28,58 @@
     }
   </style>
 </head>
+  <script>
+let carrito = [];
+
+function agregarAlCarrito(btn) {
+  // Obtén datos del producto desde el DOM
+  let articulo = btn.closest('article');
+  let nombre = articulo.querySelector('h3').textContent;
+  let precioTexto = articulo.querySelector('p').textContent;
+  let precio = parseFloat(precioTexto.replace(/[^0-9.]/g, ''));
+  let producto = carrito.find(item => item.nombre === nombre);
+  if (producto) {
+    producto.cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+  actualizarCarrito();
+}
+
+// Mostrar/ocultar carrito
+document.getElementById('carrito-toggle').onclick = function() {
+  let carritoDiv = document.getElementById('carrito');
+  carritoDiv.style.display = (carritoDiv.style.display === "none") ? "block" : "none";
+};
+
+function actualizarCarrito() {
+  let lista = document.getElementById('carrito-lista');
+  lista.innerHTML = '';
+  let total = 0;
+  let cantidad = 0;
+  carrito.forEach(item => {
+    total += item.precio * item.cantidad;
+    cantidad += item.cantidad;
+    lista.innerHTML += `<li>
+      <span>${item.nombre} <strong>x${item.cantidad}</strong></span>
+      <button onclick="quitarDelCarrito('${item.nombre}')" style="background:none;border:none;color:#d4af37;cursor:pointer;font-size:1.1rem;">✖</button>
+    </li>`;
+  });
+  document.getElementById('carrito-cantidad').textContent = cantidad;
+  document.getElementById('carrito-total').textContent = total.toFixed(2);
+}
+
+function vaciarCarrito() {
+  carrito = [];
+  actualizarCarrito();
+}
+
+function quitarDelCarrito(nombre) {
+  carrito = carrito.filter(item => item.nombre !== nombre);
+  actualizarCarrito();
+}
+</script>
+
 <body>
   <header>
     <h1>Catálogo</h1>
