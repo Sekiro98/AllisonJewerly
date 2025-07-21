@@ -29,10 +29,9 @@
   </style>
 </head>
   <script>
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
 function agregarAlCarrito(btn) {
-  // Obtén datos del producto desde el DOM
   let articulo = btn.closest('article');
   let nombre = articulo.querySelector('h3').textContent;
   let precioTexto = articulo.querySelector('p').textContent;
@@ -44,9 +43,9 @@ function agregarAlCarrito(btn) {
     carrito.push({ nombre, precio, cantidad: 1 });
   }
   actualizarCarrito();
+  guardarCarrito();
 }
 
-// Mostrar/ocultar carrito
 document.getElementById('carrito-toggle').onclick = function() {
   let carritoDiv = document.getElementById('carrito');
   carritoDiv.style.display = (carritoDiv.style.display === "none") ? "block" : "none";
@@ -72,13 +71,23 @@ function actualizarCarrito() {
 function vaciarCarrito() {
   carrito = [];
   actualizarCarrito();
+  guardarCarrito();
 }
 
 function quitarDelCarrito(nombre) {
   carrito = carrito.filter(item => item.nombre !== nombre);
   actualizarCarrito();
+  guardarCarrito();
 }
+
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+// Mostrar el carrito guardado al cargar la página
+actualizarCarrito();
 </script>
+
 
 <body>
   <header>
