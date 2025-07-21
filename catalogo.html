@@ -44,7 +44,34 @@ function agregarAlCarrito(btn) {
   }
   actualizarCarrito();
   guardarCarrito();
+  mostrarToast(`¡Agregado <b>${nombre}</b> al carrito!`);
 }
+
+// Toast centrado inferior
+function mostrarToast(texto) {
+  let toast = document.getElementById('toast-agregado');
+  let textoElem = document.getElementById('toast-texto');
+  textoElem.innerHTML = texto;
+  toast.style.display = 'block';
+  toast.style.animation = 'fadeInToast 0.25s';
+  setTimeout(() => {
+    toast.style.animation = 'fadeOutToast 0.7s';
+    setTimeout(() => {
+      toast.style.display = 'none';
+      toast.style.animation = '';
+    }, 700);
+  }, 1700);
+}
+
+// Animaciones para el toast
+const styleToast = document.createElement('style');
+styleToast.innerHTML = `
+@keyframes fadeInToast { from { opacity:0; bottom:15px; } to { opacity:0.97; bottom:40px; } }
+@keyframes fadeOutToast { from { opacity:0.97; bottom:40px; } to { opacity:0; bottom:15px; } }
+#toast-agregado { animation: fadeInToast 0.25s; }
+`;
+document.head.appendChild(styleToast);
+
 
 document.getElementById('carrito-toggle').onclick = function() {
   let carritoDiv = document.getElementById('carrito');
@@ -60,12 +87,14 @@ function actualizarCarrito() {
     total += item.precio * item.cantidad;
     cantidad += item.cantidad;
     lista.innerHTML += `<li>
-      <span>${item.nombre} <strong>x${item.cantidad}</strong></span>
-      <button onclick="quitarDelCarrito('${item.nombre}')" style="background:none;border:none;color:#d4af37;cursor:pointer;font-size:1.1rem;">✖</button>
-    </li>`;
-  });
-  document.getElementById('carrito-cantidad').textContent = cantidad;
-  document.getElementById('carrito-total').textContent = total.toFixed(2);
+      lista.innerHTML += `<li>
+  <span>${item.nombre} <strong>x${item.cantidad}</strong></span>
+  <span>
+    <button onclick="aumentarCantidad('${item.nombre}')" style="background:none;border:none;color:#4db34d;font-size:1.2rem;margin-right:5px;">＋</button>
+    <button onclick="quitarDelCarrito('${item.nombre}')" style="background:none;border:none;color:#d9534f;font-size:1.15rem;">✖</button>
+  </span>
+</li>`;
+
 }
     
 
@@ -80,6 +109,15 @@ function quitarDelCarrito(nombre) {
   actualizarCarrito();
   guardarCarrito();
 }
+    function aumentarCantidad(nombre) {
+  let prod = carrito.find(item => item.nombre === nombre);
+  if (prod) {
+    prod.cantidad += 1;
+    actualizarCarrito();
+    guardarCarrito();
+  }
+}
+
 
 function guardarCarrito() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -89,6 +127,11 @@ function guardarCarrito() {
 actualizarCarrito();
 </script>
 
+<!-- Toast de confirmación -->
+<div id="toast-agregado" style="display:none; position:fixed; left:50%; bottom:40px; transform:translateX(-50%);
+background:#111; color:#fff; padding:1rem 2rem; border-radius:16px; font-size:1.07rem; z-index:2000; box-shadow:0 4px 16px rgba(0,0,0,0.16); text-align:center; opacity:0.96;">
+  <span id="toast-texto"></span>
+</div>
 
 <body>
   <header>
