@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Catálogo | Allison Jewelry</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .filtros-catalogo {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0 1rem 0;
+    }
+    .filtro-btn {
+      background: #fff;
+      color: #d4af37;
+      border: 2px solid #d4af37;
+      padding: 0.6rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+    .filtro-btn.activo, .filtro-btn:hover {
+      background: #d4af37;
+      color: #111;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -20,28 +42,71 @@
     </nav>
   </header>
   <main>
+    <!-- Filtros visuales -->
+    <div class="filtros-catalogo">
+      <button class="filtro-btn activo" onclick="filtrarProductos('todos', this)">Todos</button>
+      <button class="filtro-btn" onclick="filtrarProductos('anillo', this)">Anillos</button>
+      <button class="filtro-btn" onclick="filtrarProductos('collar', this)">Collares</button>
+    </div>
     <section class="productos">
-      <article>
+      <article data-tipo="anillo">
         <img src="anillo1.jpg" alt="Anillo de oro 18k">
         <h3>Anillo de oro 18k</h3>
         <p>$350 USD</p>
         <button class="boton">Agregar al carrito</button>
       </article>
-      <article>
+      <article data-tipo="collar">
         <img src="collar1.jpg" alt="Collar con diamantes">
         <h3>Collar con diamantes</h3>
         <p>$780 USD</p>
         <button class="boton">Agregar al carrito</button>
       </article>
-      <!-- Puedes agregar más productos aquí duplicando el bloque <article> -->
+      <article data-tipo="anillo">
+        <img src="anillo1.jpg" alt="Anillo diseño flor">
+        <h3>Anillo diseño flor</h3>
+        <p>$420 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="collar">
+        <img src="collar1.jpg" alt="Collar de esmeraldas">
+        <h3>Collar de esmeraldas</h3>
+        <p>$820 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="anillo">
+        <img src="anillo1.jpg" alt="Anillo elegante plata">
+        <h3>Anillo elegante plata</h3>
+        <p>$199 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
+      <article data-tipo="collar">
+        <img src="collar1.jpg" alt="Collar corazón">
+        <h3>Collar corazón</h3>
+        <p>$299 USD</p>
+        <button class="boton">Agregar al carrito</button>
+      </article>
     </section>
   </main>
   <footer>
     <p>&copy; 2025 Allison Jewelry</p>
   </footer>
+  <script>
+    function filtrarProductos(tipo, boton) {
+      // Cambia el estado activo del filtro visual
+      document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('activo'));
+      boton.classList.add('activo');
+
+      // Muestra/oculta productos según filtro
+      document.querySelectorAll('.productos article').forEach(producto => {
+        if (tipo === 'todos' || producto.getAttribute('data-tipo') === tipo) {
+          producto.style.display = 'block';
+        } else {
+          producto.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
-s="floating-logo" />
-</body>
-</html>
+
 
