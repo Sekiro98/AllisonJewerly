@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .resumen-carrito {
-      background: #fffff;
+      background: #fff;
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 0 18px rgba(0,0,0,0.59);
@@ -45,7 +45,15 @@
       margin-right: auto;
       text-align: center;
     }
+    #paypal-button-container {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
   </style>
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+  <!-- Cambia sb por tu client-id real de PayPal en producción -->
 </head>
 <body>
   <header>
@@ -74,21 +82,19 @@
       <input type="email" id="email" name="email" required />
       <label for="direccion">Dirección de entrega:</label>
       <input type="text" id="direccion" name="direccion" required />
-      <button type="submit" class="boton" style="width:100%;">Finalizar compra</button>
     </form>
+    <div id="paypal-button-container"></div>
     <div id="mensaje-exito" class="exito" style="display:none;">
       <h3>¡Gracias por tu compra!</h3>
-      <p>Tu pedido ha sido recibido. Pronto nos pondremos en contacto contigo.</p>
+      <p>Tu pedido ha sido recibido y el pago procesado con éxito. Pronto nos pondremos en contacto contigo.</p>
     </div>
   </main>
   <footer>
-    <p>&copy; 2025 Joa & Ali Jewelry</p>
+    <p>&copy; Joa & Ali Jewelry</p>
   </footer>
   <script>
-    // Recuperar carrito de localStorage
+    // Cargar carrito y mostrar resumen
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    // Mostrar carrito en checkout
     function mostrarCheckout() {
       let lista = document.getElementById('checkout-lista');
       let total = 0;
@@ -101,19 +107,43 @@
         </li>`;
       });
       document.getElementById('checkout-total').textContent = total.toFixed(2);
+      return total.toFixed(2);
     }
     mostrarCheckout();
 
-    // Manejar envío de formulario
-    document.getElementById('formulario-checkout').onsubmit = function(e) {
-      e.preventDefault();
-      // Aquí podrías enviar los datos a un backend o email si lo tuvieras
-      document.getElementById('mensaje-exito').style.display = 'block';
-      document.getElementById('formulario-checkout').style.display = 'none';
-      document.getElementById('resumen-carrito').style.display = 'none';
-      // Limpia el carrito
-      localStorage.removeItem('carrito');
-    }
+    // PAYPAL BUTTON
+    paypal.Buttons({
+      style: {
+        color: 'gold',
+        shape: 'pill',
+        label: 'pay',
+        height: 40
+      },
+      createOrder: function(data, actions) {
+        let total = mostrarCheckout();
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: total
+            },
+            description: 'Compra en Allison Jewelry'
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          // Aquí puedes enviar datos del pedido a tu email si quieres
+          document.getElementById('mensaje-exito').style.display = 'block';
+          document.getElementById('formulario-checkout').style.display = 'none';
+          document.getElementById('resumen-carrito').style.display = 'none';
+          document.getElementById('paypal-button-container').style.display = 'none';
+          localStorage.removeItem('carrito');
+        });
+      },
+      onError: function(err) {
+        alert('Ocurrió un error con el pago: ' + err);
+      }
+    }).render('#paypal-button-container');
   </script>
 </body>
 </html>
