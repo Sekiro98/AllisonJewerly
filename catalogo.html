@@ -26,148 +26,42 @@
       background: #d4af37;
       color: #111;
     }
+    /* Carrito animado */
+    @keyframes slideDownFadeIn {
+      from { opacity: 0; transform: translateY(-40px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes slideUpFadeOut {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 0; transform: translateY(-40px) scale(0.98); }
+    }
+    #carrito {
+      animation-duration: 0.38s;
+      animation-fill-mode: both;
+    }
+    /* Toast animaciones */
+    @keyframes fadeInToast { from { opacity:0; bottom:15px; } to { opacity:0.97; bottom:40px; } }
+    @keyframes fadeOutToast { from { opacity:0.97; bottom:40px; } to { opacity:0; bottom:15px; } }
+    #toast-agregado { animation: fadeInToast 0.25s; }
+    /* Logo flotante */
+    .floating-logo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      z-index: 1000;
+      opacity: 0.90;
+      border-radius: 12px;
+      box-shadow: 0 0 14px rgba(0,0,0,0.20);
+    }
   </style>
 </head>
-  /* Animación para mostrar el carrito */
-@keyframes slideDownFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-40px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-@keyframes slideUpFadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-40px) scale(0.98);
-  }
-}
-#carrito {
-  animation-duration: 0.38s;
-  animation-fill-mode: both;
-}
-
-  <script>
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-function agregarAlCarrito(btn) {
-  let articulo = btn.closest('article');
-  let nombre = articulo.querySelector('h3').textContent;
-  let precioTexto = articulo.querySelector('p').textContent;
-  let precio = parseFloat(precioTexto.replace(/[^0-9.]/g, ''));
-  let producto = carrito.find(item => item.nombre === nombre);
-  if (producto) {
-    producto.cantidad += 1;
-  } else {
-    carrito.push({ nombre, precio, cantidad: 1 });
-  }
-  actualizarCarrito();
-  guardarCarrito();
-  mostrarToast(`¡Agregado <b>${nombre}</b> al carrito!`);
-}
-
-// Toast centrado inferior
-function mostrarToast(texto) {
-  let toast = document.getElementById('toast-agregado');
-  let textoElem = document.getElementById('toast-texto');
-  textoElem.innerHTML = texto;
-  toast.style.display = 'block';
-  toast.style.animation = 'fadeInToast 0.25s';
-  setTimeout(() => {
-    toast.style.animation = 'fadeOutToast 0.7s';
-    setTimeout(() => {
-      toast.style.display = 'none';
-      toast.style.animation = '';
-    }, 700);
-  }, 1700);
-}
-
-// Animaciones para el toast
-const styleToast = document.createElement('style');
-styleToast.innerHTML = `
-@keyframes fadeInToast { from { opacity:0; bottom:15px; } to { opacity:0.97; bottom:40px; } }
-@keyframes fadeOutToast { from { opacity:0.97; bottom:40px; } to { opacity:0; bottom:15px; } }
-#toast-agregado { animation: fadeInToast 0.25s; }
-`;
-document.head.appendChild(styleToast);
-
-
-document.getElementById('carrito-toggle').onclick = function() {
-  let carritoDiv = document.getElementById('carrito');
-  if (carritoDiv.style.display === "none" || carritoDiv.style.display === "") {
-    carritoDiv.style.display = "block";
-    carritoDiv.style.animationName = "slideDownFadeIn";
-  } else {
-    carritoDiv.style.animationName = "slideUpFadeOut";
-    setTimeout(() => {
-      carritoDiv.style.display = "none";
-      carritoDiv.style.animationName = "";
-    }, 360); // igual a la duración de la animación
-  }
-};
-function actualizarCarrito() {
-  let lista = document.getElementById('carrito-lista');
-  lista.innerHTML = '';
-  let total = 0;
-  let cantidad = 0;
-  carrito.forEach(item => {
-    total += item.precio * item.cantidad;
-    cantidad += item.cantidad;
-    lista.innerHTML += `<li>
-      lista.innerHTML += `<li>
-  <span>${item.nombre} <strong>x${item.cantidad}</strong></span>
-  <span>
-    <button onclick="aumentarCantidad('${item.nombre}')" style="background:none;border:none;color:#4db34d;font-size:1.2rem;margin-right:5px;">＋</button>
-    <button onclick="quitarDelCarrito('${item.nombre}')" style="background:none;border:none;color:#d9534f;font-size:1.15rem;">✖</button>
-  </span>
-</li>`;
-
-}
-    
-
-function vaciarCarrito() {
-  carrito = [];
-  actualizarCarrito();
-  guardarCarrito();
-}
-
-function quitarDelCarrito(nombre) {
-  carrito = carrito.filter(item => item.nombre !== nombre);
-  actualizarCarrito();
-  guardarCarrito();
-}
-    function aumentarCantidad(nombre) {
-  let prod = carrito.find(item => item.nombre === nombre);
-  if (prod) {
-    prod.cantidad += 1;
-    actualizarCarrito();
-    guardarCarrito();
-  }
-}
-
-
-function guardarCarrito() {
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-}
-
-// Mostrar el carrito guardado al cargar la página
-actualizarCarrito();
-</script>
-
-<!-- Toast de confirmación -->
-<div id="toast-agregado" style="display:none; position:fixed; left:50%; bottom:40px; transform:translateX(-50%);
-background:#111; color:#fff; padding:1rem 2rem; border-radius:16px; font-size:1.07rem; z-index:2000; box-shadow:0 4px 16px rgba(0,0,0,0.16); text-align:center; opacity:0.96;">
-  <span id="toast-texto"></span>
-</div>
-
 <body>
+  <!-- Toast de confirmación -->
+  <div id="toast-agregado" style="display:none; position:fixed; left:50%; bottom:40px; transform:translateX(-50%);
+  background:#111; color:#fff; padding:1rem 2rem; border-radius:16px; font-size:1.07rem; z-index:2000; box-shadow:0 4px 16px rgba(0,0,0,0.16); text-align:center; opacity:0.96;">
+    <span id="toast-texto"></span>
+  </div>
   <header>
     <h1>Catálogo</h1>
     <nav>
@@ -180,26 +74,24 @@ background:#111; color:#fff; padding:1rem 2rem; border-radius:16px; font-size:1.
       </ul>
     </nav>
   </header>
+  <!-- Carrito flotante -->
   <div id="carrito-container">
-  <button id="carrito-toggle" title="Ver carrito">🛒 (<span id="carrito-cantidad">0</span>)</button>
-  <div id="carrito" style="display: none;">
-    <h4>Carrito</h4>
-    <ul id="carrito-lista"></ul>
-    <p><strong>Total: $<span id="carrito-total">0</span> USD</strong></p>
-    <a href="checkout.html" class="boton" style="width:100%;margin-bottom:8px;display:block;text-align:center;">Ir a pagar</a>
-
-    <button onclick="vaciarCarrito()" class="boton" style="width:100%;">Vaciar carrito</button>
+    <button id="carrito-toggle" title="Ver carrito">🛒 (<span id="carrito-cantidad">0</span>)</button>
+    <div id="carrito" style="display: none;">
+      <h4>Carrito</h4>
+      <ul id="carrito-lista"></ul>
+      <p><strong>Total: $<span id="carrito-total">0</span> USD</strong></p>
+      <a href="checkout.html" class="boton" style="width:100%;margin-bottom:8px;display:block;text-align:center;">Ir a pagar</a>
+      <button onclick="vaciarCarrito()" class="boton" style="width:100%;">Vaciar carrito</button>
+    </div>
   </div>
-</div>
-
   <main>
     <!-- Filtros visuales -->
     <div class="filtros-catalogo">
       <button class="filtro-btn activo" onclick="filtrarProductos('todos', this)">Todos</button>
       <button class="filtro-btn" onclick="filtrarProductos('anillo', this)">Anillos</button>
       <button class="filtro-btn" onclick="filtrarProductos('collar', this)">Collares</button>
-      <button class="filtro-btn" onclick="filtrarProductos('pulseras', this)">pulseras</button>
-    </div>
+      <button class="filtro-btn" onclick="filtrarProductos('pulseras', this)">Pulseras</button>
     </div>
     <section class="productos">
       <article data-tipo="anillo">
@@ -207,50 +99,42 @@ background:#111; color:#fff; padding:1rem 2rem; border-radius:16px; font-size:1.
         <h3>Anillo de oro 18k</h3>
         <p>$350 USD</p>
         <button class="boton" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
-
       </article>
       <article data-tipo="collar">
         <img src="collar1.jpg" alt="Collar con diamantes">
         <h3>Collar con diamantes</h3>
         <p>$780 USD</p>
         <button class="boton" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
-
       </article>
       <article data-tipo="anillo">
         <img src="anillo2.jpg" alt="Anillo diseño flor">
         <h3>Anillo diseño flor</h3>
         <p>$420 USD</p>
         <button class="boton" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
-
       </article>
       <article data-tipo="collar">
         <img src="collar2.jpg" alt="Collar de esmeraldas">
         <h3>Collar de esmeraldas</h3>
         <p>$820 USD</p>
         <button class="boton" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
-
       </article>
       <article data-tipo="anillo">
         <img src="anillo3.jpg" alt="Anillo elegante plata">
         <h3>Anillo elegante plata</h3>
         <p>$199 USD</p>
         <button class="boton" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
-
       </article>
       <article data-tipo="collar">
         <img src="collar3.jpg" alt="Collar corazón">
         <h3>Collar corazón</h3>
         <p>$299 USD</p>
         <button class="boton" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
-
-      </article>
       </article>
       <article data-tipo="pulseras">
-        <img src="pulsera1.jpg" alt="pulsera de oro">
-        <h3>pulsera de oro</h3>
+        <img src="pulsera1.jpg" alt="Pulsera de oro">
+        <h3>Pulsera de oro</h3>
         <p>$350 USD</p>
         <button class="boton" onclick="agregarAlCarrito(this)">Agregar al carrito</button>
-
       </article>
     </section>
   </main>
@@ -258,9 +142,107 @@ background:#111; color:#fff; padding:1rem 2rem; border-radius:16px; font-size:1.
     <p>&copy; 2025 Allison Jewelry</p>
   </footer>
   <!-- Logo flotante opcional -->
-  <!-- <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" /> -->
   <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
+
   <script>
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function agregarAlCarrito(btn) {
+      let articulo = btn.closest('article');
+      let nombre = articulo.querySelector('h3').textContent;
+      let precioTexto = articulo.querySelector('p').textContent;
+      let precio = parseFloat(precioTexto.replace(/[^0-9.]/g, ''));
+      let producto = carrito.find(item => item.nombre === nombre);
+      if (producto) {
+        producto.cantidad += 1;
+      } else {
+        carrito.push({ nombre, precio, cantidad: 1 });
+      }
+      actualizarCarrito();
+      guardarCarrito();
+      mostrarToast(`¡Agregado <b>${nombre}</b> al carrito!`);
+    }
+
+    // Toast centrado inferior
+    function mostrarToast(texto) {
+      let toast = document.getElementById('toast-agregado');
+      let textoElem = document.getElementById('toast-texto');
+      textoElem.innerHTML = texto;
+      toast.style.display = 'block';
+      toast.style.animation = 'fadeInToast 0.25s';
+      setTimeout(() => {
+        toast.style.animation = 'fadeOutToast 0.7s';
+        setTimeout(() => {
+          toast.style.display = 'none';
+          toast.style.animation = '';
+        }, 700);
+      }, 1700);
+    }
+
+    // Carrito toggle con animación
+    document.getElementById('carrito-toggle').onclick = function() {
+      let carritoDiv = document.getElementById('carrito');
+      if (carritoDiv.style.display === "none" || carritoDiv.style.display === "") {
+        carritoDiv.style.display = "block";
+        carritoDiv.style.animationName = "slideDownFadeIn";
+      } else {
+        carritoDiv.style.animationName = "slideUpFadeOut";
+        setTimeout(() => {
+          carritoDiv.style.display = "none";
+          carritoDiv.style.animationName = "";
+        }, 360); // igual a la duración de la animación
+      }
+    };
+
+    function actualizarCarrito() {
+      let lista = document.getElementById('carrito-lista');
+      lista.innerHTML = '';
+      let total = 0;
+      let cantidad = 0;
+      carrito.forEach(item => {
+        total += item.precio * item.cantidad;
+        cantidad += item.cantidad;
+        lista.innerHTML += `<li>
+          <span>${item.nombre} <strong>x${item.cantidad}</strong></span>
+          <span>
+            <button onclick="aumentarCantidad('${item.nombre}')" style="background:none;border:none;color:#4db34d;font-size:1.2rem;margin-right:5px;">＋</button>
+            <button onclick="quitarDelCarrito('${item.nombre}')" style="background:none;border:none;color:#d9534f;font-size:1.15rem;">✖</button>
+          </span>
+        </li>`;
+      });
+      document.getElementById('carrito-cantidad').textContent = cantidad;
+      document.getElementById('carrito-total').textContent = total.toFixed(2);
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      actualizarCarrito();
+      guardarCarrito();
+    }
+
+    function quitarDelCarrito(nombre) {
+      carrito = carrito.filter(item => item.nombre !== nombre);
+      actualizarCarrito();
+      guardarCarrito();
+    }
+
+    function aumentarCantidad(nombre) {
+      let prod = carrito.find(item => item.nombre === nombre);
+      if (prod) {
+        prod.cantidad += 1;
+        actualizarCarrito();
+        guardarCarrito();
+      }
+    }
+
+    function guardarCarrito() {
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
+    // Mostrar el carrito guardado al cargar la página
+    actualizarCarrito();
+
+    // Filtro de productos
     function filtrarProductos(tipo, boton) {
       document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('activo'));
       boton.classList.add('activo');
@@ -275,5 +257,6 @@ background:#111; color:#fff; padding:1rem 2rem; border-radius:16px; font-size:1.
   </script>
 </body>
 </html>
+
 
 
