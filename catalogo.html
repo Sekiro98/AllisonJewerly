@@ -41,6 +41,16 @@
       </ul>
     </nav>
   </header>
+  <div id="carrito-container">
+  <button id="carrito-toggle" title="Ver carrito">🛒 (<span id="carrito-cantidad">0</span>)</button>
+  <div id="carrito" style="display: none;">
+    <h4>Carrito</h4>
+    <ul id="carrito-lista"></ul>
+    <p><strong>Total: $<span id="carrito-total">0</span> USD</strong></p>
+    <button onclick="vaciarCarrito()" class="boton" style="width:100%;">Vaciar carrito</button>
+  </div>
+</div>
+
   <main>
     <!-- Filtros visuales -->
     <div class="filtros-catalogo">
