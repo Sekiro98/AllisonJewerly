@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout | Allison Jewelry</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .resumen-carrito {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.09);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .resumen-carrito ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.2rem 0;
+    }
+    .resumen-carrito li {
+      border-bottom: 1px solid #eee;
+      padding: 0.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 1rem;
+    }
+    .resumen-carrito .total {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #d4af37;
+    }
+    .exito {
+      background: #e7ffe7;
+      border: 1px solid #7dce7d;
+      color: #236723;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Finalizar Compra</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="resumen-carrito" id="resumen-carrito">
+      <h2>Resumen de tu pedido</h2>
+      <ul id="checkout-lista"></ul>
+      <p class="total">Total: $<span id="checkout-total"></span> USD</p>
+    </section>
+    <form id="formulario-checkout">
+      <h2>Datos para la compra</h2>
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre" required />
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="direccion">Dirección de entrega:</label>
+      <input type="text" id="direccion" name="direccion" required />
+      <button type="submit" class="boton" style="width:100%;">Finalizar compra</button>
+    </form>
+    <div id="mensaje-exito" class="exito" style="display:none;">
+      <h3>¡Gracias por tu compra!</h3>
+      <p>Tu pedido ha sido recibido. Pronto nos pondremos en contacto contigo.</p>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Allison Jewelry</p>
+  </footer>
+  <script>
+    // Recuperar carrito de localStorage
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    // Mostrar carrito en checkout
+    function mostrarCheckout() {
+      let lista = document.getElementById('checkout-lista');
+      let total = 0;
+      lista.innerHTML = '';
+      carrito.forEach(item => {
+        total += item.precio * item.cantidad;
+        lista.innerHTML += `<li>
+          <span>${item.nombre} <strong>x${item.cantidad}</strong></span>
+          <span>$${(item.precio * item.cantidad).toFixed(2)}</span>
+        </li>`;
+      });
+      document.getElementById('checkout-total').textContent = total.toFixed(2);
+    }
+    mostrarCheckout();
+
+    // Manejar envío de formulario
+    document.getElementById('formulario-checkout').onsubmit = function(e) {
+      e.preventDefault();
+      // Aquí podrías enviar los datos a un backend o email si lo tuvieras
+      document.getElementById('mensaje-exito').style.display = 'block';
+      document.getElementById('formulario-checkout').style.display = 'none';
+      document.getElementById('resumen-carrito').style.display = 'none';
+      // Limpia el carrito
+      localStorage.removeItem('carrito');
+    }
+  </script>
+</body>
+</html>
