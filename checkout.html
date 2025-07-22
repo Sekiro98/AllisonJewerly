@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .resumen-carrito {
-      background: #fffff;
+      background: #ffff;
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 0 18px rgba(0,0,0,0.59);
@@ -45,14 +45,11 @@
       margin-right: auto;
       text-align: center;
     }
+    /* Centrado Paypal */
     #paypal-button-container {
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
     }
     @media (max-width: 700px) {
       #paypal-button-container {
@@ -72,12 +69,6 @@
       box-shadow: 0 0 14px rgba(0,0,0,0.20);
     }
   </style>
-  #paypal-button-container {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AW5CDt-CO4_oK_V4jqrXVNPWgeLzSJBtW9oOJrL4JnYZT4Bmt7B_BlkicjiwzrVvocC7cqIEyKa5zBKw&currency=USD"></script>
 </head>
@@ -109,12 +100,10 @@
       <label for="direccion">Dirección de entrega:</label>
       <input type="text" id="direccion" name="direccion" required />
     </form>
-    <!-- Dentro de <main> o donde lo tengas -->
-<div style="display:flex; justify-content:center; align-items:center; width:100%; margin: 0 auto;">
-  <div id="paypal-button-container"></div>
-</div>
-
-    <div id="paypal-button-container"></div>
+    <!-- PayPal centrado -->
+    <div style="display:flex; justify-content:center; align-items:center; width:100%; margin: 0 auto;">
+      <div id="paypal-button-container"></div>
+    </div>
     <div id="mensaje-exito" class="exito" style="display:none;">
       <h3>¡Gracias por tu compra!</h3>
       <p>Tu pedido ha sido recibido y el pago procesado con éxito. Pronto nos pondremos en contacto contigo.</p>
@@ -178,5 +167,3 @@
   <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
 </body>
 </html>
-
-
