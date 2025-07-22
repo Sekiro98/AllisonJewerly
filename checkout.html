@@ -52,8 +52,8 @@
     }
   </style>
   <!-- PayPal SDK -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AZDpaD5Y7cs0dKD0I2wQ5KGtWQ12mTAVhfj9mNSJBaS0dWjrczmxeosVauq5VW9EjaNYGHaOK0k6PBRi=sb&currency=USD"></script>
-  <!-- Cambia sb por tu client-id real de PayPal en producción -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AZDpaD5Y7cs0dKD0I2wQ5KGtWQ12mTAVhfj9mNSJBaS0dWjrczmxeosVauq5VW9EjaNYGHaOK0k6PBRi&currency=USD"></script>
+  <!-- Cambia el client-id arriba por tu client-id real de PayPal en producción -->
 </head>
 <body>
   <header>
@@ -132,7 +132,6 @@
       },
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {
-          // Aquí puedes enviar datos del pedido a tu email si quieres
           document.getElementById('mensaje-exito').style.display = 'block';
           document.getElementById('formulario-checkout').style.display = 'none';
           document.getElementById('resumen-carrito').style.display = 'none';
@@ -147,3 +146,4 @@
   </script>
 </body>
 </html>
+
