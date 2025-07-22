@@ -46,40 +46,34 @@
       text-align: center;
     }
     #paypal-button-container {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-@media (max-width: 700px) {
-  #paypal-button-container {
-    width: 100% !important;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-.floating-logo {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 70px;
-  z-index: 1000;
-  opacity: 0.90;
-  border-radius: 12px;
-  box-shadow: 0 0 14px rgba(0,0,0,0.20);
-}
-
-}
-
-
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width: 700px) {
+      #paypal-button-container {
+        width: 100% !important;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .floating-logo {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      z-index: 1000;
+      opacity: 0.90;
+      border-radius: 12px;
+      box-shadow: 0 0 14px rgba(0,0,0,0.20);
     }
   </style>
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AZDpaD5Y7cs0dKD0I2wQ5KGtWQ12mTAVhfj9mNSJBaS0dWjrczmxeosVauq5VW9EjaNYGHaOK0k6PBRi&currency=USD"></script>
-  <!-- Cambia el client-id arriba por tu client-id real de PayPal en producción -->
 </head>
 <body>
   <header>
@@ -171,7 +165,7 @@
     }).render('#paypal-button-container');
   </script>
   <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
-
 </body>
 </html>
+
 
