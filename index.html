@@ -6,10 +6,82 @@
   <title>JOA & ALi  Jewelry</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+  <!-- MODAL LOGIN -->
+<div id="modal-login" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.42); z-index:3000; align-items:center; justify-content:center;">
+  <form onsubmit="return loginUsuario(event)" style="background:#fff; padding:2rem; border-radius:18px; max-width:330px; margin:auto; box-shadow:0 0 20px rgba(0,0,0,0.12);">
+    <h2 style="margin-top:0;">Iniciar sesión</h2>
+    <label>Email:</label>
+    <input type="email" id="login-email" required style="width:100%; margin-bottom:0.7rem;">
+    <label>Contraseña:</label>
+    <input type="password" id="login-password" required style="width:100%; margin-bottom:1.2rem;">
+    <div style="display:flex; justify-content:space-between;">
+      <button type="submit" class="boton">Entrar</button>
+      <button type="button" class="boton" onclick="cerrarLogin()" style="background:#eee; color:#333;">Cancelar</button>
+    </div>
+  </form>
+</div>
+<!-- MODAL REGISTRO -->
+<div id="modal-registro" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.42); z-index:3000; align-items:center; justify-content:center;">
+  <form onsubmit="return registrarUsuario(event)" style="background:#fff; padding:2rem; border-radius:18px; max-width:330px; margin:auto; box-shadow:0 0 20px rgba(0,0,0,0.12);">
+    <h2 style="margin-top:0;">Crear cuenta</h2>
+    <label>Email:</label>
+    <input type="email" id="reg-email" required style="width:100%; margin-bottom:0.7rem;">
+    <label>Contraseña:</label>
+    <input type="password" id="reg-password" required style="width:100%; margin-bottom:1.2rem;">
+    <div style="display:flex; justify-content:space-between;">
+      <button type="submit" class="boton">Registrar</button>
+      <button type="button" class="boton" onclick="cerrarRegistro()" style="background:#eee; color:#333;">Cancelar</button>
+    </div>
+  </form>
+</div>
+  <script>
+function mostrarLogin() {
+  document.getElementById('modal-login').style.display = 'flex';
+}
+function cerrarLogin() {
+  document.getElementById('modal-login').style.display = 'none';
+}
+function mostrarRegistro() {
+  document.getElementById('modal-registro').style.display = 'flex';
+}
+function cerrarRegistro() {
+  document.getElementById('modal-registro').style.display = 'none';
+}
+
+// Simulación sin backend
+function loginUsuario(e) {
+  e.preventDefault();
+  alert("¡Bienvenido! (Login simulado)");
+  cerrarLogin();
+  return false;
+}
+function registrarUsuario(e) {
+  e.preventDefault();
+  alert("¡Registro exitoso! (Simulado)");
+  cerrarRegistro();
+  mostrarBonoBienvenida();
+  return false;
+}
+</script>
+<!-- BONO BIENVENIDA -->
+<div id="bono-bienvenida" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(212,175,55,0.07); z-index:4000; align-items:center; justify-content:center;">
+  <div style="background:#fffbe6; color:#444; padding:2rem; border-radius:20px; max-width:380px; margin:auto; box-shadow:0 0 32px rgba(212,175,55,0.18); text-align:center;">
+    <h2>¡Bono de Bienvenida!</h2>
+    <p>Suscríbete <b>mensualmente</b> y obtén <span style="color:#d4af37;font-weight:bold;">20% de descuento</span> en tu primera compra.</p>
+    <button class="boton" onclick="cerrarBonoBienvenida()">¡Aprovechar ahora!</button>
+  </div>
+</div>
+
+
 <body>
   <header>
     <h1>Joa & Ali  Jewelry</h1>
     <nav>
+      <div style="text-align:center; margin-top:10px;">
+  <button onclick="mostrarLogin()" class="boton" style="margin-right:6px;">Iniciar sesión</button>
+  <button onclick="mostrarRegistro()" class="boton">Registrarse</button>
+</div>
+
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="catalogo.html">Catálogo</a></li>
@@ -30,5 +102,14 @@
     <p>&copy; 2025 JOA & ALi Jewelry.Todos los derechos reservados.</p>
   </footer>
   <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
+  <script>
+function mostrarBonoBienvenida() {
+  document.getElementById('bono-bienvenida').style.display = 'flex';
+}
+function cerrarBonoBienvenida() {
+  document.getElementById('bono-bienvenida').style.display = 'none';
+}
+</script>
+
 </body>
 </html>
