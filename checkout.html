@@ -129,20 +129,19 @@
   <!-- Firebase Auth -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <script>
-  // Configuración de Firebase:
-  const firebaseConfig = {
-    apiKey: "AIzaSyBbPxoJo-GI__GoY6j9lsVA5gpMRFwcMLc",
-    authDomain: "joayalijewelry.firebaseapp.com",
-    projectId: "joayalijewelry",
-    storageBucket: "joayalijewelry.appspot.com",
-    messagingSenderId: "780084049382",
-    appId: "1:780084049382:web:0e771de4e4c0cb87495227",
-    measurementId: "G-F7Q9D876ZZ"
-  };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-</script>
-
+    // Configuración de Firebase:
+    const firebaseConfig = {
+      apiKey: "AIzaSyBbPxoJo-GI__GoY6j9lsVA5gpMRFwcMLc",
+      authDomain: "joayalijewelry.firebaseapp.com",
+      projectId: "joayalijewelry",
+      storageBucket: "joayalijewelry.appspot.com",
+      messagingSenderId: "780084049382",
+      appId: "1:780084049382:web:0e771de4e4c0cb87495227",
+      measurementId: "G-F7Q9D876ZZ"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
 </head>
 <body>
   <header>
@@ -251,37 +250,36 @@
     }
 
     // --------- LOGIN/REGISTRO ---------
-   function loginUsuario(e) {
-  e.preventDefault();
-  let email = document.getElementById('login-email').value;
-  let password = document.getElementById('login-password').value;
-  auth.signInWithEmailAndPassword(email, password)
-    .then(userCredential => {
-      cerrarLogin();
-    })
-    .catch(error => {
-      alert('Error: ' + error.message);
-    });
-  return false;
-}
+    function loginUsuario(e) {
+      e.preventDefault();
+      let email = document.getElementById('login-email').value;
+      let password = document.getElementById('login-password').value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          cerrarLogin();
+        })
+        .catch(error => {
+          alert('Error: ' + error.message);
+        });
+      return false;
+    }
 
     function registrarUsuario(e) {
-  e.preventDefault();
-  let email = document.getElementById('reg-email').value;
-  let password = document.getElementById('reg-password').value;
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(userCredential => {
-      cerrarRegistro();
-      let codigo = "BONO-" + Math.random().toString(36).substring(2,8).toUpperCase();
-      localStorage.setItem("bonoUsuario", codigo);
-      mostrarBonoBienvenida(codigo);
-    })
-    .catch(error => {
-      alert('Error: ' + error.message);
-    });
-  return false;
-}
-
+      e.preventDefault();
+      let email = document.getElementById('reg-email').value;
+      let password = document.getElementById('reg-password').value;
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          cerrarRegistro();
+          let codigo = "BONO-" + Math.random().toString(36).substring(2,8).toUpperCase();
+          localStorage.setItem("bonoUsuario", codigo);
+          mostrarBonoBienvenida(codigo);
+        })
+        .catch(error => {
+          alert('Error: ' + error.message);
+        });
+      return false;
+    }
 
     // --------- LOGIN GOOGLE ---------
     function loginGoogle() {
@@ -376,4 +374,5 @@
   <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
 </body>
 </html>
+
 
