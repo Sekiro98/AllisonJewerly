@@ -324,7 +324,12 @@
   }
   function logoutUsuario() { auth.signOut().then(() => { mostrarUIUsuario(null); }); }
   auth.onAuthStateChanged(function(user) { mostrarUIUsuario(user); });
+    auth.onAuthStateChanged(function(user) {
+  mostrarUIUsuario(user);
+});
+
 </script>
+  
 </body>
 </html>
 
