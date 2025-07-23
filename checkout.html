@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .resumen-carrito {
-      background: #fffff;
+      background: #fff;
       padding: 1.5rem;
       border-radius: 12px;
       box-shadow: 0 0 18px rgba(0,0,0,0.59);
@@ -45,7 +45,6 @@
       margin-right: auto;
       text-align: center;
     }
-    /* Centrado Paypal */
     #paypal-button-container {
       margin-top: 1.5rem;
       margin-bottom: 1.5rem;
@@ -68,59 +67,78 @@
       border-radius: 12px;
       box-shadow: 0 0 14px rgba(0,0,0,0.20);
     }
+    /* Modales */
+    .modal-fondo {
+      display: none;
+      position: fixed; left:0; top:0; width:100vw; height:100vh;
+      background: rgba(0,0,0,0.42); z-index:3000;
+      align-items:center; justify-content:center;
+    }
+    .modal-activo { display: flex !important; }
+    .modal-caja {
+      background:#fff;
+      padding:2rem;
+      border-radius:18px;
+      max-width:330px;
+      margin:auto;
+      box-shadow:0 0 20px rgba(0,0,0,0.12);
+    }
+    .modal-caja h2 { margin-top:0; }
+    .modal-caja input { width:100%; margin-bottom:1.1rem; }
+    .bono-bienvenida {
+      background:#fffbe6;
+      color:#444;
+      padding:2rem;
+      border-radius:20px;
+      max-width:380px;
+      margin:auto;
+      box-shadow:0 0 32px rgba(212,175,55,0.18);
+      text-align:center;
+    }
+    .usuario-bienvenida {
+      background: #f8f8f8;
+      color: #333;
+      border-radius: 10px;
+      padding: 0.6rem 1.3rem;
+      font-size: 1.04rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin: 18px auto 0 auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .usuario-bienvenida button {
+      margin-left: 8px;
+      background: #d4af37;
+      color: #111;
+      border: none;
+      border-radius: 7px;
+      padding: 4px 13px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .usuario-bienvenida button:hover {
+      background: #c9a733;
+    }
   </style>
   <!-- PayPal SDK -->
   <script src="https://www.paypal.com/sdk/js?client-id=AW5CDt-CO4_oK_V4jqrXVNPWgeLzSJBtW9oOJrL4JnYZT4Bmt7B_BlkicjiwzrVvocC7cqIEyKa5zBKw&currency=USD"></script>
-</head>
   <!-- Firebase App (core) -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<!-- Firebase Auth -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-<script>
-  // Tu configuración de Firebase:
-  const firebaseConfig = {
-    apiKey: "AIzaSyBbPxoJo-GI__GoY6j9lsVA5gpMRFwcMLc",
-    authDomain: "joayalijewelry.firebaseapp.com",
-    projectId: "joayalijewelry",
-    // ...
-  };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-</script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <!-- Firebase Auth -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
   <script>
-function loginUsuario(e) {
-  e.preventDefault();
-  let email = document.getElementById('login-email').value;
-  let password = document.getElementById('login-password').value;
-  auth.signInWithEmailAndPassword(email, password)
-    .then(userCredential => {
-      alert('¡Bienvenido, ' + userCredential.user.email + '!');
-      cerrarLogin();
-      // Aquí puedes actualizar la UI, mostrar nombre, etc.
-    })
-    .catch(error => {
-      alert('Error: ' + error.message);
-    });
-}
-
-function registrarUsuario(e) {
-  e.preventDefault();
-  let email = document.getElementById('reg-email').value;
-  let password = document.getElementById('reg-password').value;
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(userCredential => {
-      alert('¡Registro exitoso! Bienvenido, ' + userCredential.user.email);
-      cerrarRegistro();
-      mostrarBonoBienvenida(); // tu función de bono
-      // Aquí puedes actualizar la UI, marcar como logueado, etc.
-    })
-    .catch(error => {
-      alert('Error: ' + error.message);
-    });
-}
-</script>
-
-
+    // Configuración de Firebase:
+    const firebaseConfig = {
+      apiKey: "AIzaSyBbPxoJo-GI__GoY6j9lsVA5gpMRFwcMLc",
+      authDomain: "joayalijewelry.firebaseapp.com",
+      projectId: "joayalijewelry",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+</head>
 <body>
   <header>
     <h1>Finalizar Compra</h1>
@@ -133,6 +151,8 @@ function registrarUsuario(e) {
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
+    <!-- CONTENEDOR PARA LOGIN/REGISTRO o usuario -->
+    <div id="login-registro-container" style="text-align:center; margin-top:10px;"></div>
   </header>
   <main>
     <section class="resumen-carrito" id="resumen-carrito">
@@ -149,7 +169,6 @@ function registrarUsuario(e) {
       <label for="direccion">Dirección de entrega:</label>
       <input type="text" id="direccion" name="direccion" required />
     </form>
-    <!-- PayPal centrado -->
     <div style="display:flex; justify-content:center; align-items:center; width:100%; margin: 0 auto;">
       <div id="paypal-button-container"></div>
     </div>
@@ -161,8 +180,149 @@ function registrarUsuario(e) {
   <footer>
     <p>&copy; Joa & Ali Jewelry</p>
   </footer>
+
+  <!-- MODAL LOGIN -->
+  <div id="modal-login" class="modal-fondo">
+    <form onsubmit="return loginUsuario(event)" class="modal-caja">
+      <h2>Iniciar sesión</h2>
+      <label>Email:</label>
+      <input type="email" id="login-email" required>
+      <label>Contraseña:</label>
+      <input type="password" id="login-password" required>
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+        <button type="submit" class="boton">Entrar</button>
+        <button type="button" class="boton" onclick="loginGoogle()" style="background:#ea4335; color:#fff;">
+          <img src="https://img.icons8.com/color/18/000000/google-logo.png" style="vertical-align:middle; margin-right:4px;">Entrar con Google
+        </button>
+        <button type="button" class="boton" onclick="cerrarLogin()" style="background:#eee; color:#333;">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  <!-- MODAL REGISTRO -->
+  <div id="modal-registro" class="modal-fondo">
+    <form onsubmit="return registrarUsuario(event)" class="modal-caja">
+      <h2>Crear cuenta</h2>
+      <label>Email:</label>
+      <input type="email" id="reg-email" required>
+      <label>Contraseña:</label>
+      <input type="password" id="reg-password" required>
+      <div style="display:flex; justify-content:space-between;">
+        <button type="submit" class="boton">Registrar</button>
+        <button type="button" class="boton" onclick="cerrarRegistro()" style="background:#eee; color:#333;">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  <!-- BONO BIENVENIDA -->
+  <div id="bono-bienvenida" class="modal-fondo">
+    <div class="bono-bienvenida">
+      <h2>¡Bono de Bienvenida!</h2>
+      <p>Tu código de descuento para nuevos usuarios:</p>
+      <div id="codigo-bono" style="font-size:1.7rem;font-weight:bold; color:#d4af37; letter-spacing:1.5px; margin:1rem 0;"></div>
+      <p>Suscríbete <b>mensualmente</b> y obtén <span style="color:#d4af37;font-weight:bold;">20% de descuento</span> en tu primera compra.</p>
+      <button class="boton" onclick="cerrarBonoBienvenida()">¡Aprovechar ahora!</button>
+    </div>
+  </div>
+
   <script>
-    // Cargar carrito y mostrar resumen
+    // --------- MODALES UI ---------
+    function mostrarLogin() {
+      document.getElementById('modal-login').classList.add('modal-activo');
+    }
+    function cerrarLogin() {
+      document.getElementById('modal-login').classList.remove('modal-activo');
+    }
+    function mostrarRegistro() {
+      document.getElementById('modal-registro').classList.add('modal-activo');
+    }
+    function cerrarRegistro() {
+      document.getElementById('modal-registro').classList.remove('modal-activo');
+    }
+    function mostrarBonoBienvenida(codigo) {
+      document.getElementById('codigo-bono').textContent = codigo;
+      document.getElementById('bono-bienvenida').classList.add('modal-activo');
+    }
+    function cerrarBonoBienvenida() {
+      document.getElementById('bono-bienvenida').classList.remove('modal-activo');
+    }
+
+    // --------- LOGIN/REGISTRO ---------
+    function loginUsuario(e) {
+      e.preventDefault();
+      let email = document.getElementById('login-email').value;
+      let password = document.getElementById('login-password').value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          cerrarLogin();
+          // UI: recarga la sesión
+        })
+        .catch(error => {
+          alert('Error: ' + error.message);
+        });
+      return false;
+    }
+
+    function registrarUsuario(e) {
+      e.preventDefault();
+      let email = document.getElementById('reg-email').value;
+      let password = document.getElementById('reg-password').value;
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => {
+          cerrarRegistro();
+          // Generar código único para el usuario (ejemplo simple)
+          let codigo = "BONO-" + Math.random().toString(36).substring(2,8).toUpperCase();
+          localStorage.setItem("bonoUsuario", codigo);
+          mostrarBonoBienvenida(codigo);
+          // UI: recarga la sesión
+        })
+        .catch(error => {
+          alert('Error: ' + error.message);
+        });
+      return false;
+    }
+
+    // --------- LOGIN GOOGLE ---------
+    function loginGoogle() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(result => {
+          cerrarLogin();
+        })
+        .catch(error => {
+          alert('Error: ' + error.message);
+        });
+    }
+
+    // --------- MOSTRAR USUARIO O BOTONES ---------
+    function mostrarUIUsuario(user) {
+      const cont = document.getElementById('login-registro-container');
+      if (user) {
+        let nombre = user.displayName || user.email;
+        let bono = localStorage.getItem("bonoUsuario") ? `<br><span style='color:#d4af37'>Bono: ${localStorage.getItem("bonoUsuario")}</span>` : "";
+        cont.innerHTML = `
+          <div class="usuario-bienvenida">
+            <span>👋 Bienvenido, <b>${nombre}</b>${bono}</span>
+            <button onclick="logoutUsuario()">Salir</button>
+          </div>
+        `;
+      } else {
+        cont.innerHTML = `
+          <button onclick="mostrarLogin()" class="boton" style="margin-right:6px;">Iniciar sesión</button>
+          <button onclick="mostrarRegistro()" class="boton">Registrarse</button>
+        `;
+      }
+    }
+    function logoutUsuario() {
+      auth.signOut().then(() => {
+        mostrarUIUsuario(null);
+      });
+    }
+
+    // --------- FIREBASE AUTH STATE ---------
+    auth.onAuthStateChanged(function(user) {
+      mostrarUIUsuario(user);
+    });
+
+    // --------- CARRITO Y PAYPAL ---------
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     function mostrarCheckout() {
       let lista = document.getElementById('checkout-lista');
@@ -180,7 +340,6 @@ function registrarUsuario(e) {
     }
     mostrarCheckout();
 
-    // PAYPAL BUTTON
     paypal.Buttons({
       style: {
         color: 'gold',
@@ -192,9 +351,7 @@ function registrarUsuario(e) {
         let total = mostrarCheckout();
         return actions.order.create({
           purchase_units: [{
-            amount: {
-              value: total
-            },
+            amount: { value: total },
             description: 'Compra en Joa & Ali Jewelry'
           }]
         });
@@ -216,3 +373,4 @@ function registrarUsuario(e) {
   <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
 </body>
 </html>
+
