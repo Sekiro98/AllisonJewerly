@@ -315,6 +315,22 @@ footer {
   display: flex;
   justify-content: space-between;
 }
+@media (max-width: 700px) {
+  .modal-caja {
+    width: 94vw;
+    max-width: 99vw;
+    padding: 1.1rem !important;
+    font-size: 1.06rem;
+  }
+  .modal-caja input, .modal-caja button {
+    font-size: 1.08rem;
+  }
+  header nav ul {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+}
 
 
 
