@@ -3,71 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JOA & ALi  Jewelry</title>
+  <title>JOA & ALi Jewelry</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .modal-fondo {
-      display: none;
-      position: fixed; left:0; top:0; width:100vw; height:100vh;
-      background: rgba(0,0,0,0.42); z-index:3000;
-      align-items:center; justify-content:center;
-    }
+    body { background: linear-gradient(135deg, #171717 60%, #d4af37 150%); color:#f8f8f8; min-height:100vh; }
+    header { background:rgba(0,0,0,0.83); padding:1rem 0 0.6rem 0; }
+    header h1 { text-align:center; margin-bottom:0.5rem; color:#d4af37; }
+    nav ul { display:flex; gap:2.2rem; justify-content:center; margin:0; padding:0; list-style:none;}
+    nav a { color:#fff; text-decoration:none; font-weight:bold; font-size:1.05rem; }
+    nav a:hover { color:#d4af37; }
+    .hero { text-align:center; padding:6vw 2vw 5vw 2vw; }
+    .hero h2 { font-size:2.2rem; font-weight:600; margin-bottom:1.7rem; color:#fffbe6; }
+    .boton { background:#d4af37; color:#111; padding:0.7em 1.8em; border:none; border-radius:10px; font-size:1.07rem; font-weight:bold; cursor:pointer; margin-top:1.6rem; transition:.16s; }
+    .boton:hover { background:#bfa034; }
+    footer { text-align:center; padding:1.7rem 0 1.1rem 0; color:#aaa; background:rgba(0,0,0,0.44); font-size:.98rem; }
+    /* Bloques modales, usuario, bono */
+    .modal-fondo { display: none; position: fixed; left:0; top:0; width:100vw; height:100vh; background: rgba(0,0,0,0.42); z-index:3000; align-items:center; justify-content:center; }
     .modal-activo { display: flex !important; }
-    .modal-caja {
-      background:#fff;
-      padding:2rem;
-      border-radius:18px;
-      max-width:330px;
-      margin:auto;
-      box-shadow:0 0 20px rgba(0,0,0,0.12);
-    }
+    .modal-caja { background:#fff; color:#111; padding:2rem; border-radius:18px; max-width:330px; margin:auto; box-shadow:0 0 20px rgba(0,0,0,0.12);}
     .modal-caja h2 { margin-top:0; }
-    .modal-caja input { width:100%; margin-bottom:1.1rem; }
-    .bono-bienvenida {
-      background:#fffbe6;
-      color:#444;
-      padding:2rem;
-      border-radius:20px;
-      max-width:380px;
-      margin:auto;
-      box-shadow:0 0 32px rgba(212,175,55,0.18);
-      text-align:center;
-    }
-    .usuario-bienvenida {
-      background: #f8f8f8;
-      color: #333;
-      border-radius: 10px;
-      padding: 0.6rem 1.3rem;
-      font-size: 1.04rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin: 18px auto 0 auto;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-    }
-    .usuario-bienvenida button {
-      margin-left: 8px;
-      background: #d4af37;
-      color: #111;
-      border: none;
-      border-radius: 7px;
-      padding: 4px 13px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.18s;
-    }
-    .usuario-bienvenida button:hover {
-      background: #c9a733;
-    }
-    .floating-logo {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 70px;
-      z-index: 1000;
-      opacity: 0.90;
-      border-radius: 12px;
-      box-shadow: 0 0 14px rgba(0,0,0,0.20);
+    .modal-caja input { width:100%; margin-bottom:1.1rem; font-size:1.1rem; padding:0.5em; }
+    .bono-bienvenida { background:#fffbe6; color:#444; padding:2rem; border-radius:20px; max-width:380px; margin:auto; box-shadow:0 0 32px rgba(212,175,55,0.18); text-align:center; }
+    .usuario-bienvenida { background: #f8f8f8; color: #333; border-radius: 10px; padding: 0.6rem 1.3rem; font-size: 1.04rem; display: inline-flex; align-items: center; gap: 12px; margin: 18px auto 0 auto; box-shadow: 0 2px 10px rgba(0,0,0,0.04);}
+    .usuario-bienvenida button { margin-left: 8px; background: #d4af37; color: #111; border: none; border-radius: 7px; padding: 4px 13px; font-weight: bold; cursor: pointer; transition: background 0.18s;}
+    .usuario-bienvenida button:hover { background: #c9a733;}
+    .floating-logo { position: fixed; bottom: 30px; right: 30px; width: 70px; z-index: 1000; opacity: 0.90; border-radius: 12px; box-shadow: 0 0 14px rgba(0,0,0,0.20);}
+    @media (max-width: 700px) {
+      nav ul { flex-direction:column; gap:1.2rem;}
+      .modal-caja { width: 94vw; max-width: 99vw; padding: 1.1rem !important; font-size: 1.06rem;}
+      .modal-caja input, .modal-caja button { font-size: 1.08rem; }
     }
   </style>
   <!-- Firebase App (core) -->
@@ -77,30 +41,30 @@
   <script>
     // Configuración de Firebase:
     const firebaseConfig = {
-  apiKey: "AIzaSyBbPxoJo-GI__GoY6j9lsVA5gpMRFwcMLc",
-  authDomain: "joayalijewelry.firebaseapp.com",
-  projectId: "joayalijewelry",
-  storageBucket: "joayalijewelry.firebasestorage.app",
-  messagingSenderId: "780084049382",
-  appId: "1:780084049382:web:0e771de4e4c0cb87495227",
-  measurementId: "G-F7Q9D876ZZ"
-};
+      apiKey: "TU_API_KEY",
+      authDomain: "TU_AUTH_DOMAIN",
+      projectId: "TU_PROJECT_ID",
+      storageBucket: "TU_BUCKET.appspot.com",
+      messagingSenderId: "XXXX",
+      appId: "XXXX",
+      measurementId: "G-XXXX"
+    };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
   </script>
 </head>
 <body>
   <header>
-    <h1>Joa & Ali  Jewelry</h1>
+    <h1>Joa & Ali Jewelry</h1>
     <nav>
-  <ul>
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="catalogo.html">Catálogo</a></li>
-    <li><a href="servicios.html">Servicios</a></li>
-  </ul>
-  <div id="login-registro-container" style="text-align:center; margin-top:10px;"></div>
-</nav>
-
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <div id="login-registro-container" style="text-align:center; margin-top:10px;"></div>
+    </nav>
   </header>
   <main>
     <section class="hero">
@@ -111,8 +75,9 @@
   <footer>
     <p>&copy; 2025 JOA & ALi Jewelry. Todos los derechos reservados.</p>
   </footer>
+  <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
 
-  <!-- MODAL LOGIN -->
+  <!-- MODALES Y BONO -->
   <div id="modal-login" class="modal-fondo">
     <form onsubmit="return loginUsuario(event)" class="modal-caja">
       <h2>Iniciar sesión</h2>
@@ -130,7 +95,6 @@
       </div>
     </form>
   </div>
-  <!-- MODAL REGISTRO -->
   <div id="modal-registro" class="modal-fondo">
     <form onsubmit="return registrarUsuario(event)" class="modal-caja">
       <h2>Crear cuenta</h2>
@@ -144,7 +108,6 @@
       </div>
     </form>
   </div>
-  <!-- BONO BIENVENIDA -->
   <div id="bono-bienvenida" class="modal-fondo">
     <div class="bono-bienvenida">
       <h2>¡Bono de Bienvenida!</h2>
@@ -154,10 +117,9 @@
       <button class="boton" onclick="cerrarBonoBienvenida()">¡Aprovechar ahora!</button>
     </div>
   </div>
-  <img src="img/logo.png" alt="Allison Jewelry Logo" class="floating-logo" />
 
+  <!-- JS LOGIN/REGISTRO USUARIO Y GOOGLE -->
   <script>
-    // --------- MODALES UI ---------
     function mostrarLogin() { document.getElementById('modal-login').classList.add('modal-activo'); }
     function cerrarLogin() { document.getElementById('modal-login').classList.remove('modal-activo'); }
     function mostrarRegistro() { document.getElementById('modal-registro').classList.add('modal-activo'); }
@@ -169,8 +131,6 @@
     function cerrarBonoBienvenida() {
       document.getElementById('bono-bienvenida').classList.remove('modal-activo');
     }
-
-    // --------- LOGIN/REGISTRO ---------
     function loginUsuario(e) {
       e.preventDefault();
       let email = document.getElementById('login-email').value;
@@ -180,7 +140,6 @@
         .catch(error => { alert('Error: ' + error.message); });
       return false;
     }
-
     function registrarUsuario(e) {
       e.preventDefault();
       let email = document.getElementById('reg-email').value;
@@ -195,20 +154,12 @@
         .catch(error => { alert('Error: ' + error.message); });
       return false;
     }
-
-    // --------- LOGIN GOOGLE ---------
     function loginGoogle() {
       var provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider)
-        .then(result => {
-          cerrarLogin();
-        })
-        .catch(error => {
-          alert('Error: ' + error.message);
-        });
+        .then(result => { cerrarLogin(); })
+        .catch(error => { alert('Error: ' + error.message); });
     }
-
-    // --------- MOSTRAR USUARIO O BOTONES ---------
     function mostrarUIUsuario(user) {
       const cont = document.getElementById('login-registro-container');
       if (user) {
@@ -230,49 +181,7 @@
     function logoutUsuario() { auth.signOut().then(() => { mostrarUIUsuario(null); }); }
     auth.onAuthStateChanged(function(user) { mostrarUIUsuario(user); });
   </script>
-  <!-- MODAL LOGIN -->
-<div id="modal-login" class="modal-fondo">
-  <form onsubmit="return loginUsuario(event)" class="modal-caja">
-    <h2>Iniciar sesión</h2>
-    <label>Email:</label>
-    <input type="email" id="login-email" required>
-    <label>Contraseña:</label>
-    <input type="password" id="login-password" required>
-    <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
-      <button type="submit" class="boton">Entrar</button>
-      <button type="button" class="boton" onclick="loginGoogle()" style="background:#ea4335; color:#fff;">
-        <img src="https://img.icons8.com/color/18/000000/google-logo.png" style="vertical-align:middle; margin-right:4px;">
-        Entrar con Google
-      </button>
-      <button type="button" class="boton" onclick="cerrarLogin()" style="background:#eee; color:#333;">Cancelar</button>
-    </div>
-  </form>
-</div>
-<!-- MODAL REGISTRO -->
-<div id="modal-registro" class="modal-fondo">
-  <form onsubmit="return registrarUsuario(event)" class="modal-caja">
-    <h2>Crear cuenta</h2>
-    <label>Email:</label>
-    <input type="email" id="reg-email" required>
-    <label>Contraseña:</label>
-    <input type="password" id="reg-password" required>
-    <div style="display:flex; justify-content:space-between;">
-      <button type="submit" class="boton">Registrar</button>
-      <button type="button" class="boton" onclick="cerrarRegistro()" style="background:#eee; color:#333;">Cancelar</button>
-    </div>
-  </form>
-</div>
-<!-- BONO BIENVENIDA -->
-<div id="bono-bienvenida" class="modal-fondo">
-  <div class="bono-bienvenida">
-    <h2>¡Bono de Bienvenida!</h2>
-    <p>Tu código de descuento para nuevos usuarios:</p>
-    <div id="codigo-bono" style="font-size:1.7rem;font-weight:bold; color:#d4af37; letter-spacing:1.5px; margin:1rem 0;"></div>
-    <p>Suscríbete <b>mensualmente</b> y obtén <span style="color:#d4af37;font-weight:bold;">20% de descuento</span> en tu primera compra.</p>
-    <button class="boton" onclick="cerrarBonoBienvenida()">¡Aprovechar ahora!</button>
-  </div>
-</div>
-
 </body>
 </html>
+
 
