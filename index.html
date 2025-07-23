@@ -47,21 +47,6 @@ function mostrarRegistro() {
 function cerrarRegistro() {
   document.getElementById('modal-registro').style.display = 'none';
 }
-
-// Simulación sin backend
-function loginUsuario(e) {
-  e.preventDefault();
-  alert("¡Bienvenido! (Login simulado)");
-  cerrarLogin();
-  return false;
-}
-function registrarUsuario(e) {
-  e.preventDefault();
-  alert("¡Registro exitoso! (Simulado)");
-  cerrarRegistro();
-  mostrarBonoBienvenida();
-  return false;
-}
 </script>
 <!-- BONO BIENVENIDA -->
 <div id="bono-bienvenida" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(212,175,55,0.07); z-index:4000; align-items:center; justify-content:center;">
