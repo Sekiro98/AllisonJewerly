@@ -133,6 +133,34 @@ main {
   border-radius: 10px;
 }
 
+/* Bordes interactivos para los textos de las secciones */
+section p,
+section li,
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+section p:hover,
+section li:hover,
+section h1:hover,
+section h2:hover,
+section h3:hover,
+section h4:hover,
+section h5:hover,
+section h6:hover {
+  border-color: #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
 /* Formulario de contacto */
 form {
   background: #1f1f1f;
